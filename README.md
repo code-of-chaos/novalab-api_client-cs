@@ -90,11 +90,11 @@ namespace Example
 
             try
             {
-                apiInstance.ApiUserIdTwitchTokensRefreshGet(userId);
+                apiInstance.RefreshTokens(userId);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AccessTokenApi.ApiUserIdTwitchTokensRefreshGet: " + e.Message );
+                Debug.Print("Exception when calling AccessTokenApi.RefreshTokens: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -111,21 +111,28 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccessTokenApi* | [**ApiUserIdTwitchTokensRefreshGet**](docs/AccessTokenApi.md#apiuseridtwitchtokensrefreshget) | **GET** /api/{userId}/twitch/tokens/refresh | 
+*AccessTokenApi* | [**RefreshTokens**](docs/AccessTokenApi.md#refreshtokens) | **GET** /api/{userId}/twitch/tokens/refresh | 
 *NovaLabVersion1000CultureneutralPublicKeyTokennullApi* | [**AccountLogoutPost**](docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md#accountlogoutpost) | **POST** /Account/Logout | 
 *NovaLabVersion1000CultureneutralPublicKeyTokennullApi* | [**AccountManageDownloadPersonalDataPost**](docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md#accountmanagedownloadpersonaldatapost) | **POST** /Account/Manage/DownloadPersonalData | 
 *NovaLabVersion1000CultureneutralPublicKeyTokennullApi* | [**AccountManageLinkExternalLoginPost**](docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md#accountmanagelinkexternalloginpost) | **POST** /Account/Manage/LinkExternalLogin | 
 *NovaLabVersion1000CultureneutralPublicKeyTokennullApi* | [**AccountPerformExternalLoginPost**](docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md#accountperformexternalloginpost) | **POST** /Account/PerformExternalLogin | 
-*TwitchManagedRewardApi* | [**ApiUserIdTwitchManagedRewardsGet**](docs/TwitchManagedRewardApi.md#apiuseridtwitchmanagedrewardsget) | **GET** /api/{userId}/twitch/managed-rewards | 
-*TwitchManagedRewardApi* | [**ApiUserIdTwitchManagedRewardsPost**](docs/TwitchManagedRewardApi.md#apiuseridtwitchmanagedrewardspost) | **POST** /api/{userId}/twitch/managed-rewards | 
-*TwitchManagedRewardRedemptionApi* | [**ApiUserIdTwitchManagedRewardsRedemptionsGet**](docs/TwitchManagedRewardRedemptionApi.md#apiuseridtwitchmanagedrewardsredemptionsget) | **GET** /api/{userId}/twitch/managed-rewards-redemptions | 
-*TwitchManagedRewardRedemptionApi* | [**ApiUserIdTwitchManagedRewardsRedemptionsPost**](docs/TwitchManagedRewardRedemptionApi.md#apiuseridtwitchmanagedrewardsredemptionspost) | **POST** /api/{userId}/twitch/managed-rewards-redemptions | 
+*TwitchManagedRewardApi* | [**GetManagedRewards**](docs/TwitchManagedRewardApi.md#getmanagedrewards) | **GET** /api/{userId}/twitch/managed-rewards | 
+*TwitchManagedRewardApi* | [**PostManagedReward**](docs/TwitchManagedRewardApi.md#postmanagedreward) | **POST** /api/{userId}/twitch/managed-rewards | 
+*TwitchManagedRewardRedemptionApi* | [**GetRedemptions**](docs/TwitchManagedRewardRedemptionApi.md#getredemptions) | **GET** /api/{userId}/twitch/managed-rewards-redemptions | 
+*TwitchManagedRewardRedemptionApi* | [**PostRedemption**](docs/TwitchManagedRewardRedemptionApi.md#postredemption) | **POST** /api/{userId}/twitch/managed-rewards-redemptions | 
 
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.ApiResult](docs/ApiResult.md)
+ - [Model.ApplicationUser](docs/ApplicationUser.md)
  - [Model.CreateCustomRewardsRequest](docs/CreateCustomRewardsRequest.md)
+ - [Model.HttpStatusCode](docs/HttpStatusCode.md)
+ - [Model.TwitchManagedReward](docs/TwitchManagedReward.md)
+ - [Model.TwitchManagedRewardApiResult](docs/TwitchManagedRewardApiResult.md)
+ - [Model.TwitchManagedRewardRedemption](docs/TwitchManagedRewardRedemption.md)
+ - [Model.TwitchManagedRewardRedemptionApiResult](docs/TwitchManagedRewardRedemptionApiResult.md)
  - [Model.TwitchManagedRewardRedemptionDto](docs/TwitchManagedRewardRedemptionDto.md)
 
 

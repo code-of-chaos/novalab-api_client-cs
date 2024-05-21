@@ -32,7 +32,7 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void ApiUserIdTwitchTokensRefreshGet(string userId, int operationIndex = 0);
+        void RefreshTokens(string userId, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -44,7 +44,7 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiUserIdTwitchTokensRefreshGetWithHttpInfo(string userId, int operationIndex = 0);
+        ApiResponse<Object> RefreshTokensWithHttpInfo(string userId, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -65,7 +65,7 @@ namespace NovaLab.ApiClient.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiUserIdTwitchTokensRefreshGetAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task RefreshTokensAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -78,7 +78,7 @@ namespace NovaLab.ApiClient.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiUserIdTwitchTokensRefreshGetWithHttpInfoAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> RefreshTokensWithHttpInfoAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -206,9 +206,9 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void ApiUserIdTwitchTokensRefreshGet(string userId, int operationIndex = 0)
+        public void RefreshTokens(string userId, int operationIndex = 0)
         {
-            ApiUserIdTwitchTokensRefreshGetWithHttpInfo(userId);
+            RefreshTokensWithHttpInfo(userId);
         }
 
         /// <summary>
@@ -218,12 +218,12 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public NovaLab.ApiClient.Client.ApiResponse<Object> ApiUserIdTwitchTokensRefreshGetWithHttpInfo(string userId, int operationIndex = 0)
+        public NovaLab.ApiClient.Client.ApiResponse<Object> RefreshTokensWithHttpInfo(string userId, int operationIndex = 0)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
             {
-                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling AccessTokenApi->ApiUserIdTwitchTokensRefreshGet");
+                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling AccessTokenApi->RefreshTokens");
             }
 
             NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
@@ -249,7 +249,7 @@ namespace NovaLab.ApiClient.Api
 
             localVarRequestOptions.PathParameters.Add("userId", NovaLab.ApiClient.Client.ClientUtils.ParameterToString(userId)); // path parameter
 
-            localVarRequestOptions.Operation = "AccessTokenApi.ApiUserIdTwitchTokensRefreshGet";
+            localVarRequestOptions.Operation = "AccessTokenApi.RefreshTokens";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
@@ -257,7 +257,7 @@ namespace NovaLab.ApiClient.Api
             var localVarResponse = this.Client.Get<Object>("/api/{userId}/twitch/tokens/refresh", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiUserIdTwitchTokensRefreshGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("RefreshTokens", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -275,9 +275,9 @@ namespace NovaLab.ApiClient.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiUserIdTwitchTokensRefreshGetAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task RefreshTokensAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await ApiUserIdTwitchTokensRefreshGetWithHttpInfoAsync(userId, operationIndex, cancellationToken).ConfigureAwait(false);
+            await RefreshTokensWithHttpInfoAsync(userId, operationIndex, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -288,12 +288,12 @@ namespace NovaLab.ApiClient.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<Object>> ApiUserIdTwitchTokensRefreshGetWithHttpInfoAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<Object>> RefreshTokensWithHttpInfoAsync(string userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
             {
-                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling AccessTokenApi->ApiUserIdTwitchTokensRefreshGet");
+                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling AccessTokenApi->RefreshTokens");
             }
 
 
@@ -320,7 +320,7 @@ namespace NovaLab.ApiClient.Api
 
             localVarRequestOptions.PathParameters.Add("userId", NovaLab.ApiClient.Client.ClientUtils.ParameterToString(userId)); // path parameter
 
-            localVarRequestOptions.Operation = "AccessTokenApi.ApiUserIdTwitchTokensRefreshGet";
+            localVarRequestOptions.Operation = "AccessTokenApi.RefreshTokens";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
@@ -329,7 +329,7 @@ namespace NovaLab.ApiClient.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiUserIdTwitchTokensRefreshGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("RefreshTokens", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

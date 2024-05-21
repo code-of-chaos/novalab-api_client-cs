@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ApiUserIdTwitchManagedRewardsRedemptionsGet**](TwitchManagedRewardRedemptionApi.md#apiuseridtwitchmanagedrewardsredemptionsget) | **GET** /api/{userId}/twitch/managed-rewards-redemptions |  |
-| [**ApiUserIdTwitchManagedRewardsRedemptionsPost**](TwitchManagedRewardRedemptionApi.md#apiuseridtwitchmanagedrewardsredemptionspost) | **POST** /api/{userId}/twitch/managed-rewards-redemptions |  |
+| [**GetRedemptions**](TwitchManagedRewardRedemptionApi.md#getredemptions) | **GET** /api/{userId}/twitch/managed-rewards-redemptions |  |
+| [**PostRedemption**](TwitchManagedRewardRedemptionApi.md#postredemption) | **POST** /api/{userId}/twitch/managed-rewards-redemptions |  |
 
-<a name="apiuseridtwitchmanagedrewardsredemptionsget"></a>
-# **ApiUserIdTwitchManagedRewardsRedemptionsGet**
-> void ApiUserIdTwitchManagedRewardsRedemptionsGet (string userId, Guid? rewardId = null, DateTime? after = null, int? limit = null)
+<a name="getredemptions"></a>
+# **GetRedemptions**
+> TwitchManagedRewardRedemptionApiResult GetRedemptions (string userId, Guid? rewardId = null, DateTime? after = null, int? limit = null)
 
 
 
@@ -23,7 +23,7 @@ using NovaLab.ApiClient.Model;
 
 namespace Example
 {
-    public class ApiUserIdTwitchManagedRewardsRedemptionsGetExample
+    public class GetRedemptionsExample
     {
         public static void Main()
         {
@@ -37,11 +37,12 @@ namespace Example
 
             try
             {
-                apiInstance.ApiUserIdTwitchManagedRewardsRedemptionsGet(userId, rewardId, after, limit);
+                TwitchManagedRewardRedemptionApiResult result = apiInstance.GetRedemptions(userId, rewardId, after, limit);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsGet: " + e.Message);
+                Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.GetRedemptions: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -50,17 +51,20 @@ namespace Example
 }
 ```
 
-#### Using the ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfo variant
+#### Using the GetRedemptionsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    apiInstance.ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfo(userId, rewardId, after, limit);
+    ApiResponse<TwitchManagedRewardRedemptionApiResult> response = apiInstance.GetRedemptionsWithHttpInfo(userId, rewardId, after, limit);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.GetRedemptionsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -77,7 +81,7 @@ catch (ApiException e)
 
 ### Return type
 
-void (empty response body)
+[**TwitchManagedRewardRedemptionApiResult**](TwitchManagedRewardRedemptionApiResult.md)
 
 ### Authorization
 
@@ -86,19 +90,20 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="apiuseridtwitchmanagedrewardsredemptionspost"></a>
-# **ApiUserIdTwitchManagedRewardsRedemptionsPost**
-> void ApiUserIdTwitchManagedRewardsRedemptionsPost (string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = null)
+<a name="postredemption"></a>
+# **PostRedemption**
+> ApiResult PostRedemption (string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = null)
 
 
 
@@ -112,7 +117,7 @@ using NovaLab.ApiClient.Model;
 
 namespace Example
 {
-    public class ApiUserIdTwitchManagedRewardsRedemptionsPostExample
+    public class PostRedemptionExample
     {
         public static void Main()
         {
@@ -124,11 +129,12 @@ namespace Example
 
             try
             {
-                apiInstance.ApiUserIdTwitchManagedRewardsRedemptionsPost(userId, twitchManagedRewardRedemptionDto);
+                ApiResult result = apiInstance.PostRedemption(userId, twitchManagedRewardRedemptionDto);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsPost: " + e.Message);
+                Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.PostRedemption: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -137,17 +143,20 @@ namespace Example
 }
 ```
 
-#### Using the ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfo variant
+#### Using the PostRedemptionWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    apiInstance.ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfo(userId, twitchManagedRewardRedemptionDto);
+    ApiResponse<ApiResult> response = apiInstance.PostRedemptionWithHttpInfo(userId, twitchManagedRewardRedemptionDto);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TwitchManagedRewardRedemptionApi.PostRedemptionWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -162,7 +171,7 @@ catch (ApiException e)
 
 ### Return type
 
-void (empty response body)
+[**ApiResult**](ApiResult.md)
 
 ### Authorization
 
@@ -171,13 +180,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/*+json
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -35,8 +35,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="after"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiUserIdTwitchManagedRewardsRedemptionsGet(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
+        /// <returns>TwitchManagedRewardRedemptionApiResult</returns>
+        TwitchManagedRewardRedemptionApiResult GetRedemptions(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -50,8 +50,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="after"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfo(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
+        /// <returns>ApiResponse of TwitchManagedRewardRedemptionApiResult</returns>
+        ApiResponse<TwitchManagedRewardRedemptionApiResult> GetRedemptionsWithHttpInfo(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -59,8 +59,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiUserIdTwitchManagedRewardsRedemptionsPost(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0);
+        /// <returns>ApiResult</returns>
+        ApiResult PostRedemption(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -72,8 +72,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfo(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0);
+        /// <returns>ApiResponse of ApiResult</returns>
+        ApiResponse<ApiResult> PostRedemptionWithHttpInfo(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -96,8 +96,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiUserIdTwitchManagedRewardsRedemptionsGetAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of TwitchManagedRewardRedemptionApiResult</returns>
+        System.Threading.Tasks.Task<TwitchManagedRewardRedemptionApiResult> GetRedemptionsAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -112,8 +112,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfoAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (TwitchManagedRewardRedemptionApiResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TwitchManagedRewardRedemptionApiResult>> GetRedemptionsWithHttpInfoAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -125,8 +125,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiUserIdTwitchManagedRewardsRedemptionsPostAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResult</returns>
+        System.Threading.Tasks.Task<ApiResult> PostRedemptionAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -139,8 +139,8 @@ namespace NovaLab.ApiClient.Api
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfoAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (ApiResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiResult>> PostRedemptionWithHttpInfoAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -270,10 +270,11 @@ namespace NovaLab.ApiClient.Api
         /// <param name="after"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiUserIdTwitchManagedRewardsRedemptionsGet(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
+        /// <returns>TwitchManagedRewardRedemptionApiResult</returns>
+        public TwitchManagedRewardRedemptionApiResult GetRedemptions(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
         {
-            ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfo(userId, rewardId, after, limit);
+            NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardRedemptionApiResult> localVarResponse = GetRedemptionsWithHttpInfo(userId, rewardId, after, limit);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -285,13 +286,13 @@ namespace NovaLab.ApiClient.Api
         /// <param name="after"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public NovaLab.ApiClient.Client.ApiResponse<Object> ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfo(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
+        /// <returns>ApiResponse of TwitchManagedRewardRedemptionApiResult</returns>
+        public NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardRedemptionApiResult> GetRedemptionsWithHttpInfo(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
             {
-                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->ApiUserIdTwitchManagedRewardsRedemptionsGet");
+                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->GetRedemptions");
             }
 
             NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
@@ -301,6 +302,9 @@ namespace NovaLab.ApiClient.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
 
             var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -329,15 +333,15 @@ namespace NovaLab.ApiClient.Api
                 localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
             }
 
-            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsGet";
+            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.GetRedemptions";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<TwitchManagedRewardRedemptionApiResult>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiUserIdTwitchManagedRewardsRedemptionsGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetRedemptions", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -357,10 +361,11 @@ namespace NovaLab.ApiClient.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiUserIdTwitchManagedRewardsRedemptionsGetAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of TwitchManagedRewardRedemptionApiResult</returns>
+        public async System.Threading.Tasks.Task<TwitchManagedRewardRedemptionApiResult> GetRedemptionsAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfoAsync(userId, rewardId, after, limit, operationIndex, cancellationToken).ConfigureAwait(false);
+            NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardRedemptionApiResult> localVarResponse = await GetRedemptionsWithHttpInfoAsync(userId, rewardId, after, limit, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -373,13 +378,13 @@ namespace NovaLab.ApiClient.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<Object>> ApiUserIdTwitchManagedRewardsRedemptionsGetWithHttpInfoAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (TwitchManagedRewardRedemptionApiResult)</returns>
+        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardRedemptionApiResult>> GetRedemptionsWithHttpInfoAsync(string userId, Guid? rewardId = default(Guid?), DateTime? after = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
             {
-                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->ApiUserIdTwitchManagedRewardsRedemptionsGet");
+                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->GetRedemptions");
             }
 
 
@@ -390,6 +395,9 @@ namespace NovaLab.ApiClient.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
 
             var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -418,16 +426,16 @@ namespace NovaLab.ApiClient.Api
                 localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
             }
 
-            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsGet";
+            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.GetRedemptions";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TwitchManagedRewardRedemptionApiResult>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiUserIdTwitchManagedRewardsRedemptionsGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetRedemptions", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -444,10 +452,11 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiUserIdTwitchManagedRewardsRedemptionsPost(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0)
+        /// <returns>ApiResult</returns>
+        public ApiResult PostRedemption(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0)
         {
-            ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfo(userId, twitchManagedRewardRedemptionDto);
+            NovaLab.ApiClient.Client.ApiResponse<ApiResult> localVarResponse = PostRedemptionWithHttpInfo(userId, twitchManagedRewardRedemptionDto);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -457,13 +466,13 @@ namespace NovaLab.ApiClient.Api
         /// <param name="userId"></param>
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public NovaLab.ApiClient.Client.ApiResponse<Object> ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfo(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0)
+        /// <returns>ApiResponse of ApiResult</returns>
+        public NovaLab.ApiClient.Client.ApiResponse<ApiResult> PostRedemptionWithHttpInfo(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
             {
-                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->ApiUserIdTwitchManagedRewardsRedemptionsPost");
+                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->PostRedemption");
             }
 
             NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
@@ -476,6 +485,9 @@ namespace NovaLab.ApiClient.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
 
             var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -493,15 +505,15 @@ namespace NovaLab.ApiClient.Api
             localVarRequestOptions.PathParameters.Add("userId", NovaLab.ApiClient.Client.ClientUtils.ParameterToString(userId)); // path parameter
             localVarRequestOptions.Data = twitchManagedRewardRedemptionDto;
 
-            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsPost";
+            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.PostRedemption";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<ApiResult>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiUserIdTwitchManagedRewardsRedemptionsPost", localVarResponse);
+                Exception _exception = this.ExceptionFactory("PostRedemption", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -519,10 +531,11 @@ namespace NovaLab.ApiClient.Api
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiUserIdTwitchManagedRewardsRedemptionsPostAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResult</returns>
+        public async System.Threading.Tasks.Task<ApiResult> PostRedemptionAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfoAsync(userId, twitchManagedRewardRedemptionDto, operationIndex, cancellationToken).ConfigureAwait(false);
+            NovaLab.ApiClient.Client.ApiResponse<ApiResult> localVarResponse = await PostRedemptionWithHttpInfoAsync(userId, twitchManagedRewardRedemptionDto, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -533,13 +546,13 @@ namespace NovaLab.ApiClient.Api
         /// <param name="twitchManagedRewardRedemptionDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<Object>> ApiUserIdTwitchManagedRewardsRedemptionsPostWithHttpInfoAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ApiResult)</returns>
+        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<ApiResult>> PostRedemptionWithHttpInfoAsync(string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = default(TwitchManagedRewardRedemptionDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
             {
-                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->ApiUserIdTwitchManagedRewardsRedemptionsPost");
+                throw new NovaLab.ApiClient.Client.ApiException(400, "Missing required parameter 'userId' when calling TwitchManagedRewardRedemptionApi->PostRedemption");
             }
 
 
@@ -553,6 +566,9 @@ namespace NovaLab.ApiClient.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
 
             var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -570,16 +586,16 @@ namespace NovaLab.ApiClient.Api
             localVarRequestOptions.PathParameters.Add("userId", NovaLab.ApiClient.Client.ClientUtils.ParameterToString(userId)); // path parameter
             localVarRequestOptions.Data = twitchManagedRewardRedemptionDto;
 
-            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.ApiUserIdTwitchManagedRewardsRedemptionsPost";
+            localVarRequestOptions.Operation = "TwitchManagedRewardRedemptionApi.PostRedemption";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ApiResult>("/api/{userId}/twitch/managed-rewards-redemptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiUserIdTwitchManagedRewardsRedemptionsPost", localVarResponse);
+                Exception _exception = this.ExceptionFactory("PostRedemption", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ApiUserIdTwitchTokensRefreshGet**](AccessTokenApi.md#apiuseridtwitchtokensrefreshget) | **GET** /api/{userId}/twitch/tokens/refresh |  |
+| [**RefreshTokens**](AccessTokenApi.md#refreshtokens) | **GET** /api/{userId}/twitch/tokens/refresh |  |
 
-<a name="apiuseridtwitchtokensrefreshget"></a>
-# **ApiUserIdTwitchTokensRefreshGet**
-> void ApiUserIdTwitchTokensRefreshGet (string userId)
+<a name="refreshtokens"></a>
+# **RefreshTokens**
+> void RefreshTokens (string userId)
 
 
 
@@ -22,7 +22,7 @@ using NovaLab.ApiClient.Model;
 
 namespace Example
 {
-    public class ApiUserIdTwitchTokensRefreshGetExample
+    public class RefreshTokensExample
     {
         public static void Main()
         {
@@ -33,11 +33,11 @@ namespace Example
 
             try
             {
-                apiInstance.ApiUserIdTwitchTokensRefreshGet(userId);
+                apiInstance.RefreshTokens(userId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AccessTokenApi.ApiUserIdTwitchTokensRefreshGet: " + e.Message);
+                Debug.Print("Exception when calling AccessTokenApi.RefreshTokens: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -46,17 +46,17 @@ namespace Example
 }
 ```
 
-#### Using the ApiUserIdTwitchTokensRefreshGetWithHttpInfo variant
+#### Using the RefreshTokensWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    apiInstance.ApiUserIdTwitchTokensRefreshGetWithHttpInfo(userId);
+    apiInstance.RefreshTokensWithHttpInfo(userId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AccessTokenApi.ApiUserIdTwitchTokensRefreshGetWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AccessTokenApi.RefreshTokensWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
