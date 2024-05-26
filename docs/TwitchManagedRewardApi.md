@@ -4,12 +4,13 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetManagedRewards**](TwitchManagedRewardApi.md#getmanagedrewards) | **GET** /api/{userId}/twitch/managed-rewards |  |
-| [**PostManagedReward**](TwitchManagedRewardApi.md#postmanagedreward) | **POST** /api/{userId}/twitch/managed-rewards |  |
+| [**GetManagedRewards**](TwitchManagedRewardApi.md#getmanagedrewards) | **GET** /api/twitch/managed-rewards |  |
+| [**PostManagedReward**](TwitchManagedRewardApi.md#postmanagedreward) | **POST** /api/twitch/managed-rewards |  |
+| [**PostNewLastCleared**](TwitchManagedRewardApi.md#postnewlastcleared) | **POST** /api/twitch/managed-rewards/clear |  |
 
 <a name="getmanagedrewards"></a>
 # **GetManagedRewards**
-> ApiResult GetManagedRewards (string userId, int? limit = null)
+> TwitchManagedRewardApiResult GetManagedRewards (string? userId = null, int? limit = null)
 
 
 
@@ -30,12 +31,12 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new TwitchManagedRewardApi(config);
-            var userId = "userId_example";  // string | 
+            var userId = "userId_example";  // string? |  (optional) 
             var limit = 56;  // int? |  (optional) 
 
             try
             {
-                ApiResult result = apiInstance.GetManagedRewards(userId, limit);
+                TwitchManagedRewardApiResult result = apiInstance.GetManagedRewards(userId, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -55,7 +56,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<ApiResult> response = apiInstance.GetManagedRewardsWithHttpInfo(userId, limit);
+    ApiResponse<TwitchManagedRewardApiResult> response = apiInstance.GetManagedRewardsWithHttpInfo(userId, limit);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -72,12 +73,12 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **string** |  |  |
+| **userId** | **string?** |  | [optional]  |
 | **limit** | **int?** |  | [optional]  |
 
 ### Return type
 
-[**ApiResult**](ApiResult.md)
+[**TwitchManagedRewardApiResult**](TwitchManagedRewardApiResult.md)
 
 ### Authorization
 
@@ -93,12 +94,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="postmanagedreward"></a>
 # **PostManagedReward**
-> TwitchManagedRewardApiResult PostManagedReward (string userId, CreateCustomRewardsRequest? createCustomRewardsRequest = null)
+> ApiResult PostManagedReward (string? userId = null, PostManagedRewardDto? postManagedRewardDto = null)
 
 
 
@@ -119,12 +121,12 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new TwitchManagedRewardApi(config);
-            var userId = "userId_example";  // string | 
-            var createCustomRewardsRequest = new CreateCustomRewardsRequest?(); // CreateCustomRewardsRequest? |  (optional) 
+            var userId = "userId_example";  // string? |  (optional) 
+            var postManagedRewardDto = new PostManagedRewardDto?(); // PostManagedRewardDto? |  (optional) 
 
             try
             {
-                TwitchManagedRewardApiResult result = apiInstance.PostManagedReward(userId, createCustomRewardsRequest);
+                ApiResult result = apiInstance.PostManagedReward(userId, postManagedRewardDto);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -144,7 +146,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<TwitchManagedRewardApiResult> response = apiInstance.PostManagedRewardWithHttpInfo(userId, createCustomRewardsRequest);
+    ApiResponse<ApiResult> response = apiInstance.PostManagedRewardWithHttpInfo(userId, postManagedRewardDto);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -161,12 +163,12 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **string** |  |  |
-| **createCustomRewardsRequest** | [**CreateCustomRewardsRequest?**](CreateCustomRewardsRequest?.md) |  | [optional]  |
+| **userId** | **string?** |  | [optional]  |
+| **postManagedRewardDto** | [**PostManagedRewardDto?**](PostManagedRewardDto?.md) |  | [optional]  |
 
 ### Return type
 
-[**TwitchManagedRewardApiResult**](TwitchManagedRewardApiResult.md)
+[**ApiResult**](ApiResult.md)
 
 ### Authorization
 
@@ -183,6 +185,94 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 | **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="postnewlastcleared"></a>
+# **PostNewLastCleared**
+> ApiResult PostNewLastCleared (string? managedRewardId = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using NovaLab.ApiClient.Api;
+using NovaLab.ApiClient.Client;
+using NovaLab.ApiClient.Model;
+
+namespace Example
+{
+    public class PostNewLastClearedExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost";
+            var apiInstance = new TwitchManagedRewardApi(config);
+            var managedRewardId = "managedRewardId_example";  // string? |  (optional) 
+
+            try
+            {
+                ApiResult result = apiInstance.PostNewLastCleared(managedRewardId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TwitchManagedRewardApi.PostNewLastCleared: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PostNewLastClearedWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ApiResult> response = apiInstance.PostNewLastClearedWithHttpInfo(managedRewardId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TwitchManagedRewardApi.PostNewLastClearedWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **managedRewardId** | **string?** |  | [optional]  |
+
+### Return type
+
+[**ApiResult**](ApiResult.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

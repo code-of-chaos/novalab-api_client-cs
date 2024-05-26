@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**RefreshTokens**](AccessTokenApi.md#refreshtokens) | **GET** /api/{userId}/twitch/tokens/refresh |  |
+| [**RefreshTokens**](AccessTokenApi.md#refreshtokens) | **GET** /api/twitch/tokens/refresh |  |
 
 <a name="refreshtokens"></a>
 # **RefreshTokens**
-> void RefreshTokens (string userId)
+> ApiResult RefreshTokens (string? userId = null)
 
 
 
@@ -29,11 +29,12 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new AccessTokenApi(config);
-            var userId = "userId_example";  // string | 
+            var userId = "userId_example";  // string? |  (optional) 
 
             try
             {
-                apiInstance.RefreshTokens(userId);
+                ApiResult result = apiInstance.RefreshTokens(userId);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
@@ -52,7 +53,10 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    apiInstance.RefreshTokensWithHttpInfo(userId);
+    ApiResponse<ApiResult> response = apiInstance.RefreshTokensWithHttpInfo(userId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
@@ -66,11 +70,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **string** |  |  |
+| **userId** | **string?** |  | [optional]  |
 
 ### Return type
 
-void (empty response body)
+[**ApiResult**](ApiResult.md)
 
 ### Authorization
 
@@ -79,13 +83,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

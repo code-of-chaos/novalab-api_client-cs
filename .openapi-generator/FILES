@@ -4,10 +4,11 @@ README.md
 appveyor.yml
 docs/AccessTokenApi.md
 docs/ApiResult.md
-docs/ApplicationUser.md
 docs/CreateCustomRewardsRequest.md
 docs/HttpStatusCode.md
+docs/NovaLabUser.md
 docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md
+docs/PostManagedRewardDto.md
 docs/TwitchManagedReward.md
 docs/TwitchManagedRewardApi.md
 docs/TwitchManagedRewardApiResult.md
@@ -39,9 +40,10 @@ src/NovaLab.ApiClient/Client/RequestOptions.cs
 src/NovaLab.ApiClient/Client/RetryConfiguration.cs
 src/NovaLab.ApiClient/Model/AbstractOpenAPISchema.cs
 src/NovaLab.ApiClient/Model/ApiResult.cs
-src/NovaLab.ApiClient/Model/ApplicationUser.cs
 src/NovaLab.ApiClient/Model/CreateCustomRewardsRequest.cs
 src/NovaLab.ApiClient/Model/HttpStatusCode.cs
+src/NovaLab.ApiClient/Model/NovaLabUser.cs
+src/NovaLab.ApiClient/Model/PostManagedRewardDto.cs
 src/NovaLab.ApiClient/Model/TwitchManagedReward.cs
 src/NovaLab.ApiClient/Model/TwitchManagedRewardApiResult.cs
 src/NovaLab.ApiClient/Model/TwitchManagedRewardRedemption.cs

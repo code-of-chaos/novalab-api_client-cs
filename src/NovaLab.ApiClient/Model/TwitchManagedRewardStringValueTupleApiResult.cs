@@ -10,6 +10,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
@@ -17,35 +18,29 @@ using System.ComponentModel.DataAnnotations;
 namespace NovaLab.ApiClient.Model
 {
     /// <summary>
-    /// TwitchManagedRewardRedemptionDto
+    /// TwitchManagedRewardStringValueTupleApiResult
     /// </summary>
-    [DataContract(Name = "TwitchManagedRewardRedemptionDto")]
-    public partial class TwitchManagedRewardRedemptionDto : IEquatable<TwitchManagedRewardRedemptionDto>, IValidatableObject
+    [DataContract(Name = "TwitchManagedRewardStringValueTupleApiResult")]
+    public partial class TwitchManagedRewardStringValueTupleApiResult : IEquatable<TwitchManagedRewardStringValueTupleApiResult>, IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedRewardRedemptionDto" /> class.
+        /// Gets or Sets Status
         /// </summary>
-        /// <param name="rewardId">rewardId.</param>
-        /// <param name="username">username.</param>
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public HttpStatusCode? Status { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitchManagedRewardStringValueTupleApiResult" /> class.
+        /// </summary>
+        /// <param name="status">status.</param>
         /// <param name="message">message.</param>
-        public TwitchManagedRewardRedemptionDto(string rewardId = default(string), string username = default(string), string message = default(string))
+        /// <param name="data">data.</param>
+        public TwitchManagedRewardStringValueTupleApiResult(HttpStatusCode? status = default(HttpStatusCode?), string message = default(string), List<Object> data = default(List<Object>))
         {
-            this.RewardId = rewardId;
-            this.Username = username;
+            this.Status = status;
             this.Message = message;
+            this.Data = data;
         }
-
-        /// <summary>
-        /// Gets or Sets RewardId
-        /// </summary>
-        [DataMember(Name = "rewardId", EmitDefaultValue = true)]
-        public string RewardId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = true)]
-        public string Username { get; set; }
 
         /// <summary>
         /// Gets or Sets Message
@@ -54,16 +49,22 @@ namespace NovaLab.ApiClient.Model
         public string Message { get; set; }
 
         /// <summary>
+        /// Gets or Sets Data
+        /// </summary>
+        [DataMember(Name = "data", EmitDefaultValue = true)]
+        public List<Object> Data { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class TwitchManagedRewardRedemptionDto {\n");
-            sb.Append("  RewardId: ").Append(RewardId).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
+            sb.Append("class TwitchManagedRewardStringValueTupleApiResult {\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,15 +85,15 @@ namespace NovaLab.ApiClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TwitchManagedRewardRedemptionDto);
+            return this.Equals(input as TwitchManagedRewardStringValueTupleApiResult);
         }
 
         /// <summary>
-        /// Returns true if TwitchManagedRewardRedemptionDto instances are equal
+        /// Returns true if TwitchManagedRewardStringValueTupleApiResult instances are equal
         /// </summary>
-        /// <param name="input">Instance of TwitchManagedRewardRedemptionDto to be compared</param>
+        /// <param name="input">Instance of TwitchManagedRewardStringValueTupleApiResult to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TwitchManagedRewardRedemptionDto input)
+        public bool Equals(TwitchManagedRewardStringValueTupleApiResult input)
         {
             if (input == null)
             {
@@ -100,19 +101,19 @@ namespace NovaLab.ApiClient.Model
             }
             return 
                 (
-                    this.RewardId == input.RewardId ||
-                    (this.RewardId != null &&
-                    this.RewardId.Equals(input.RewardId))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
+                    this.Status == input.Status ||
+                    this.Status.Equals(input.Status)
                 ) && 
                 (
                     this.Message == input.Message ||
                     (this.Message != null &&
                     this.Message.Equals(input.Message))
+                ) && 
+                (
+                    this.Data == input.Data ||
+                    this.Data != null &&
+                    input.Data != null &&
+                    this.Data.SequenceEqual(input.Data)
                 );
         }
 
@@ -125,17 +126,14 @@ namespace NovaLab.ApiClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.RewardId != null)
-                {
-                    hashCode = (hashCode * 59) + this.RewardId.GetHashCode();
-                }
-                if (this.Username != null)
-                {
-                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 if (this.Message != null)
                 {
                     hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                }
+                if (this.Data != null)
+                {
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
                 }
                 return hashCode;
             }

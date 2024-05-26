@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetRedemptions**](TwitchManagedRewardRedemptionApi.md#getredemptions) | **GET** /api/{userId}/twitch/managed-rewards-redemptions |  |
-| [**PostRedemption**](TwitchManagedRewardRedemptionApi.md#postredemption) | **POST** /api/{userId}/twitch/managed-rewards-redemptions |  |
+| [**GetRedemptions**](TwitchManagedRewardRedemptionApi.md#getredemptions) | **GET** /api/twitch/managed-rewards-redemptions |  |
+| [**PostRedemption**](TwitchManagedRewardRedemptionApi.md#postredemption) | **POST** /api/twitch/managed-rewards-redemptions |  |
 
 <a name="getredemptions"></a>
 # **GetRedemptions**
-> TwitchManagedRewardRedemptionApiResult GetRedemptions (string userId, Guid? rewardId = null, DateTime? after = null, int? limit = null)
+> TwitchManagedRewardRedemptionApiResult GetRedemptions (string? userId = null, Guid? rewardId = null, DateTime? after = null, int? limit = null)
 
 
 
@@ -30,7 +30,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new TwitchManagedRewardRedemptionApi(config);
-            var userId = "userId_example";  // string | 
+            var userId = "userId_example";  // string? |  (optional) 
             var rewardId = "rewardId_example";  // Guid? |  (optional) 
             var after = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? |  (optional) 
             var limit = 56;  // int? |  (optional) 
@@ -74,7 +74,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **string** |  |  |
+| **userId** | **string?** |  | [optional]  |
 | **rewardId** | **Guid?** |  | [optional]  |
 | **after** | **DateTime?** |  | [optional]  |
 | **limit** | **int?** |  | [optional]  |
@@ -103,7 +103,7 @@ No authorization required
 
 <a name="postredemption"></a>
 # **PostRedemption**
-> ApiResult PostRedemption (string userId, TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = null)
+> ApiResult PostRedemption (TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = null)
 
 
 
@@ -124,12 +124,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new TwitchManagedRewardRedemptionApi(config);
-            var userId = "userId_example";  // string | 
             var twitchManagedRewardRedemptionDto = new TwitchManagedRewardRedemptionDto?(); // TwitchManagedRewardRedemptionDto? |  (optional) 
 
             try
             {
-                ApiResult result = apiInstance.PostRedemption(userId, twitchManagedRewardRedemptionDto);
+                ApiResult result = apiInstance.PostRedemption(twitchManagedRewardRedemptionDto);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -149,7 +148,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<ApiResult> response = apiInstance.PostRedemptionWithHttpInfo(userId, twitchManagedRewardRedemptionDto);
+    ApiResponse<ApiResult> response = apiInstance.PostRedemptionWithHttpInfo(twitchManagedRewardRedemptionDto);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -166,7 +165,6 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **string** |  |  |
 | **twitchManagedRewardRedemptionDto** | [**TwitchManagedRewardRedemptionDto?**](TwitchManagedRewardRedemptionDto?.md) |  | [optional]  |
 
 ### Return type
@@ -187,6 +185,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
