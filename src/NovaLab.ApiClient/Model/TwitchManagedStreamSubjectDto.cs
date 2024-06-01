@@ -26,41 +26,41 @@ using OpenAPIDateConverter = NovaLab.ApiClient.Client.OpenAPIDateConverter;
 namespace NovaLab.ApiClient.Model
 {
     /// <summary>
-    /// PostTwitchManagedRewardRedemptionDto
+    /// TwitchManagedStreamSubjectDto
     /// </summary>
-    [DataContract(Name = "PostTwitchManagedRewardRedemptionDto")]
-    public partial class PostTwitchManagedRewardRedemptionDto : IEquatable<PostTwitchManagedRewardRedemptionDto>, IValidatableObject
+    [DataContract(Name = "TwitchManagedStreamSubjectDto")]
+    public partial class TwitchManagedStreamSubjectDto : IEquatable<TwitchManagedStreamSubjectDto>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostTwitchManagedRewardRedemptionDto" /> class.
+        /// Initializes a new instance of the <see cref="TwitchManagedStreamSubjectDto" /> class.
         /// </summary>
-        /// <param name="twitchRewardId">twitchRewardId.</param>
-        /// <param name="userName">userName.</param>
-        /// <param name="message">message.</param>
-        public PostTwitchManagedRewardRedemptionDto(string twitchRewardId = default(string), string userName = default(string), string message = default(string))
+        /// <param name="selectionName">selectionName.</param>
+        /// <param name="obsSubjectTitle">obsSubjectTitle.</param>
+        /// <param name="twitchSubjectTitle">twitchSubjectTitle.</param>
+        public TwitchManagedStreamSubjectDto(string selectionName = default(string), string obsSubjectTitle = default(string), string twitchSubjectTitle = default(string))
         {
-            this.TwitchRewardId = twitchRewardId;
-            this.UserName = userName;
-            this.Message = message;
+            this.SelectionName = selectionName;
+            this.ObsSubjectTitle = obsSubjectTitle;
+            this.TwitchSubjectTitle = twitchSubjectTitle;
         }
 
         /// <summary>
-        /// Gets or Sets TwitchRewardId
+        /// Gets or Sets SelectionName
         /// </summary>
-        [DataMember(Name = "twitchRewardId", EmitDefaultValue = true)]
-        public string TwitchRewardId { get; set; }
+        [DataMember(Name = "selectionName", EmitDefaultValue = true)]
+        public string SelectionName { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserName
+        /// Gets or Sets ObsSubjectTitle
         /// </summary>
-        [DataMember(Name = "userName", EmitDefaultValue = true)]
-        public string UserName { get; set; }
+        [DataMember(Name = "obsSubjectTitle", EmitDefaultValue = true)]
+        public string ObsSubjectTitle { get; set; }
 
         /// <summary>
-        /// Gets or Sets Message
+        /// Gets or Sets TwitchSubjectTitle
         /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = true)]
-        public string Message { get; set; }
+        [DataMember(Name = "twitchSubjectTitle", EmitDefaultValue = true)]
+        public string TwitchSubjectTitle { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,10 +69,10 @@ namespace NovaLab.ApiClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class PostTwitchManagedRewardRedemptionDto {\n");
-            sb.Append("  TwitchRewardId: ").Append(TwitchRewardId).Append("\n");
-            sb.Append("  UserName: ").Append(UserName).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("class TwitchManagedStreamSubjectDto {\n");
+            sb.Append("  SelectionName: ").Append(SelectionName).Append("\n");
+            sb.Append("  ObsSubjectTitle: ").Append(ObsSubjectTitle).Append("\n");
+            sb.Append("  TwitchSubjectTitle: ").Append(TwitchSubjectTitle).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,15 +93,15 @@ namespace NovaLab.ApiClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PostTwitchManagedRewardRedemptionDto);
+            return this.Equals(input as TwitchManagedStreamSubjectDto);
         }
 
         /// <summary>
-        /// Returns true if PostTwitchManagedRewardRedemptionDto instances are equal
+        /// Returns true if TwitchManagedStreamSubjectDto instances are equal
         /// </summary>
-        /// <param name="input">Instance of PostTwitchManagedRewardRedemptionDto to be compared</param>
+        /// <param name="input">Instance of TwitchManagedStreamSubjectDto to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PostTwitchManagedRewardRedemptionDto input)
+        public bool Equals(TwitchManagedStreamSubjectDto input)
         {
             if (input == null)
             {
@@ -109,19 +109,19 @@ namespace NovaLab.ApiClient.Model
             }
             return 
                 (
-                    this.TwitchRewardId == input.TwitchRewardId ||
-                    (this.TwitchRewardId != null &&
-                    this.TwitchRewardId.Equals(input.TwitchRewardId))
+                    this.SelectionName == input.SelectionName ||
+                    (this.SelectionName != null &&
+                    this.SelectionName.Equals(input.SelectionName))
                 ) && 
                 (
-                    this.UserName == input.UserName ||
-                    (this.UserName != null &&
-                    this.UserName.Equals(input.UserName))
+                    this.ObsSubjectTitle == input.ObsSubjectTitle ||
+                    (this.ObsSubjectTitle != null &&
+                    this.ObsSubjectTitle.Equals(input.ObsSubjectTitle))
                 ) && 
                 (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
+                    this.TwitchSubjectTitle == input.TwitchSubjectTitle ||
+                    (this.TwitchSubjectTitle != null &&
+                    this.TwitchSubjectTitle.Equals(input.TwitchSubjectTitle))
                 );
         }
 
@@ -134,17 +134,17 @@ namespace NovaLab.ApiClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.TwitchRewardId != null)
+                if (this.SelectionName != null)
                 {
-                    hashCode = (hashCode * 59) + this.TwitchRewardId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SelectionName.GetHashCode();
                 }
-                if (this.UserName != null)
+                if (this.ObsSubjectTitle != null)
                 {
-                    hashCode = (hashCode * 59) + this.UserName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ObsSubjectTitle.GetHashCode();
                 }
-                if (this.Message != null)
+                if (this.TwitchSubjectTitle != null)
                 {
-                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TwitchSubjectTitle.GetHashCode();
                 }
                 return hashCode;
             }

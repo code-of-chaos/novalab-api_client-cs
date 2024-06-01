@@ -124,6 +124,9 @@ Class | Method | HTTP request | Description
 *TwitchManagedRewardApi* | [**PostNewLastCleared**](docs/TwitchManagedRewardApi.md#postnewlastcleared) | **POST** /api/twitch/managed-rewards/clear | 
 *TwitchManagedRewardRedemptionApi* | [**GetRedemptions**](docs/TwitchManagedRewardRedemptionApi.md#getredemptions) | **GET** /api/twitch/managed-rewards-redemptions | 
 *TwitchManagedRewardRedemptionApi* | [**PostRedemption**](docs/TwitchManagedRewardRedemptionApi.md#postredemption) | **POST** /api/twitch/managed-rewards-redemptions | 
+*TwitchManagedStreamSubjectApi* | [**GetManagedStreamSubjects**](docs/TwitchManagedStreamSubjectApi.md#getmanagedstreamsubjects) | **GET** /api/twitch/managed-stream-subject | 
+*TwitchManagedStreamSubjectApi* | [**PostManagedStreamSubjects**](docs/TwitchManagedStreamSubjectApi.md#postmanagedstreamsubjects) | **POST** /api/twitch/managed-stream-subject | 
+*TwitchManagedStreamSubjectApi* | [**PostSelectManagedStreamSubject**](docs/TwitchManagedStreamSubjectApi.md#postselectmanagedstreamsubject) | **POST** /api/twitch/managed-stream-subject/select | 
 *TwitchNewFollowerApi* | [**GetNewFollowers**](docs/TwitchNewFollowerApi.md#getnewfollowers) | **GET** /api/twitch/followers/new-follower | 
 *TwitchNewFollowerApi* | [**PostNewFollower**](docs/TwitchNewFollowerApi.md#postnewfollower) | **POST** /api/twitch/followers/new-follower | 
 
@@ -142,10 +145,13 @@ Class | Method | HTTP request | Description
  - [Model.PostManagedRewardDto](docs/PostManagedRewardDto.md)
  - [Model.PostNewFollowerDto](docs/PostNewFollowerDto.md)
  - [Model.PostTwitchManagedRewardRedemptionDto](docs/PostTwitchManagedRewardRedemptionDto.md)
+ - [Model.PostTwitchManagedStreamSubjectDto](docs/PostTwitchManagedStreamSubjectDto.md)
  - [Model.TwitchManagedRewardDto](docs/TwitchManagedRewardDto.md)
  - [Model.TwitchManagedRewardDtoApiResult](docs/TwitchManagedRewardDtoApiResult.md)
  - [Model.TwitchManagedRewardRedemptionDto](docs/TwitchManagedRewardRedemptionDto.md)
  - [Model.TwitchManagedRewardRedemptionDtoApiResult](docs/TwitchManagedRewardRedemptionDtoApiResult.md)
+ - [Model.TwitchManagedStreamSubjectDto](docs/TwitchManagedStreamSubjectDto.md)
+ - [Model.TwitchManagedStreamSubjectDtoApiResult](docs/TwitchManagedStreamSubjectDtoApiResult.md)
 
 
 <a name="documentation-for-authorization"></a>

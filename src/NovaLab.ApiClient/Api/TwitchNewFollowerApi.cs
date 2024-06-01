@@ -8,499 +8,574 @@
  */
 
 
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using NovaLab.ApiClient.Client;
 using NovaLab.ApiClient.Model;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace NovaLab.ApiClient.Api;
-
-/// <summary>
-///     Represents a collection of functions to interact with the API endpoints
-/// </summary>
-public interface ITwitchNewFollowerApiSync : IApiAccessor {
-    #region Synchronous Operations
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>NewFollowerDtoApiResult</returns>
-    NewFollowerDtoApiResult GetNewFollowers(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0);
+namespace NovaLab.ApiClient.Api
+{
 
     /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    /// <remarks>
-    /// </remarks>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
-    ApiResponse<NewFollowerDtoApiResult> GetNewFollowersWithHttpInfo(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0);
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>NewFollowerDtoApiResult</returns>
-    NewFollowerDtoApiResult PostNewFollower(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0);
+    public interface ITwitchNewFollowerApiSync : IApiAccessor
+    {
+        #region Synchronous Operations
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>NewFollowerDtoApiResult</returns>
+        NewFollowerDtoApiResult GetNewFollowers(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
 
-    /// <summary>
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
-    ApiResponse<NewFollowerDtoApiResult> PostNewFollowerWithHttpInfo(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0);
-    #endregion Synchronous Operations
-}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
+        ApiResponse<NewFollowerDtoApiResult> GetNewFollowersWithHttpInfo(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>NewFollowerDtoApiResult</returns>
+        NewFollowerDtoApiResult PostNewFollower(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0);
 
-/// <summary>
-///     Represents a collection of functions to interact with the API endpoints
-/// </summary>
-public interface ITwitchNewFollowerApiAsync : IApiAccessor {
-    #region Asynchronous Operations
-    /// <summary>
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of NewFollowerDtoApiResult</returns>
-    Task<NewFollowerDtoApiResult> GetNewFollowersAsync(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
-    Task<ApiResponse<NewFollowerDtoApiResult>> GetNewFollowersWithHttpInfoAsync(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0, CancellationToken cancellationToken = default);
-    /// <summary>
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of NewFollowerDtoApiResult</returns>
-    Task<NewFollowerDtoApiResult> PostNewFollowerAsync(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
-    Task<ApiResponse<NewFollowerDtoApiResult>> PostNewFollowerWithHttpInfoAsync(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0, CancellationToken cancellationToken = default);
-    #endregion Asynchronous Operations
-}
-
-/// <summary>
-///     Represents a collection of functions to interact with the API endpoints
-/// </summary>
-public interface ITwitchNewFollowerApi : ITwitchNewFollowerApiSync, ITwitchNewFollowerApiAsync {
-}
-
-/// <summary>
-///     Represents a collection of functions to interact with the API endpoints
-/// </summary>
-public class TwitchNewFollowerApi : ITwitchNewFollowerApi {
-    private ExceptionFactory _exceptionFactory = (name, response) => null;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="TwitchNewFollowerApi" /> class.
-    /// </summary>
-    /// <returns></returns>
-    public TwitchNewFollowerApi() : this((string)null) {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
+        ApiResponse<NewFollowerDtoApiResult> PostNewFollowerWithHttpInfo(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0);
+        #endregion Synchronous Operations
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="TwitchNewFollowerApi" /> class.
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    /// <returns></returns>
-    public TwitchNewFollowerApi(string basePath) {
-        Configuration = ApiClient.Client.Configuration.MergeConfigurations(
-        GlobalConfiguration.Instance,
-        new Configuration { BasePath = basePath }
-        );
-        Client = new Client.ApiClient(Configuration.BasePath);
-        AsynchronousClient = new Client.ApiClient(Configuration.BasePath);
-        ExceptionFactory = ApiClient.Client.Configuration.DefaultExceptionFactory;
+    public interface ITwitchNewFollowerApiAsync : IApiAccessor
+    {
+        #region Asynchronous Operations
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of NewFollowerDtoApiResult</returns>
+        System.Threading.Tasks.Task<NewFollowerDtoApiResult> GetNewFollowersAsync(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NewFollowerDtoApiResult>> GetNewFollowersWithHttpInfoAsync(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of NewFollowerDtoApiResult</returns>
+        System.Threading.Tasks.Task<NewFollowerDtoApiResult> PostNewFollowerAsync(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NewFollowerDtoApiResult>> PostNewFollowerWithHttpInfoAsync(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        #endregion Asynchronous Operations
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="TwitchNewFollowerApi" /> class
-    ///     using Configuration object
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    /// <param name="configuration">An instance of Configuration</param>
-    /// <returns></returns>
-    public TwitchNewFollowerApi(Configuration configuration) {
-        if (configuration == null) throw new ArgumentNullException("configuration");
+    public interface ITwitchNewFollowerApi : ITwitchNewFollowerApiSync, ITwitchNewFollowerApiAsync
+    {
 
-        Configuration = ApiClient.Client.Configuration.MergeConfigurations(
-        GlobalConfiguration.Instance,
-        configuration
-        );
-        Client = new Client.ApiClient(Configuration.BasePath);
-        AsynchronousClient = new Client.ApiClient(Configuration.BasePath);
-        ExceptionFactory = ApiClient.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="TwitchNewFollowerApi" /> class
-    ///     using a Configuration object and client instance.
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    /// <param name="client">The client interface for synchronous API access.</param>
-    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-    /// <param name="configuration">The configuration object.</param>
-    public TwitchNewFollowerApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration) {
-        if (client == null) throw new ArgumentNullException("client");
-        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-        if (configuration == null) throw new ArgumentNullException("configuration");
+    public partial class TwitchNewFollowerApi : ITwitchNewFollowerApi
+    {
+        private NovaLab.ApiClient.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
-        Client = client;
-        AsynchronousClient = asyncClient;
-        Configuration = configuration;
-        ExceptionFactory = ApiClient.Client.Configuration.DefaultExceptionFactory;
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitchNewFollowerApi"/> class.
+        /// </summary>
+        /// <returns></returns>
+        public TwitchNewFollowerApi() : this((string)null)
+        {
+        }
 
-    /// <summary>
-    ///     The client for accessing this underlying API asynchronously.
-    /// </summary>
-    public IAsynchronousClient AsynchronousClient { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitchNewFollowerApi"/> class.
+        /// </summary>
+        /// <returns></returns>
+        public TwitchNewFollowerApi(string basePath)
+        {
+            this.Configuration = NovaLab.ApiClient.Client.Configuration.MergeConfigurations(
+                NovaLab.ApiClient.Client.GlobalConfiguration.Instance,
+                new NovaLab.ApiClient.Client.Configuration { BasePath = basePath }
+            );
+            this.Client = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
+            this.ExceptionFactory = NovaLab.ApiClient.Client.Configuration.DefaultExceptionFactory;
+        }
 
-    /// <summary>
-    ///     The client for accessing this underlying API synchronously.
-    /// </summary>
-    public ISynchronousClient Client { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitchNewFollowerApi"/> class
+        /// using Configuration object
+        /// </summary>
+        /// <param name="configuration">An instance of Configuration</param>
+        /// <returns></returns>
+        public TwitchNewFollowerApi(NovaLab.ApiClient.Client.Configuration configuration)
+        {
+            if (configuration == null) throw new ArgumentNullException("configuration");
 
-    /// <summary>
-    ///     Gets the base path of the API client.
-    /// </summary>
-    /// <value>The base path</value>
-    public string GetBasePath() => Configuration.BasePath;
+            this.Configuration = NovaLab.ApiClient.Client.Configuration.MergeConfigurations(
+                NovaLab.ApiClient.Client.GlobalConfiguration.Instance,
+                configuration
+            );
+            this.Client = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
+            ExceptionFactory = NovaLab.ApiClient.Client.Configuration.DefaultExceptionFactory;
+        }
 
-    /// <summary>
-    ///     Gets or sets the configuration object
-    /// </summary>
-    /// <value>An instance of the Configuration</value>
-    public IReadableConfiguration Configuration { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitchNewFollowerApi"/> class
+        /// using a Configuration object and client instance.
+        /// </summary>
+        /// <param name="client">The client interface for synchronous API access.</param>
+        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+        /// <param name="configuration">The configuration object.</param>
+        public TwitchNewFollowerApi(NovaLab.ApiClient.Client.ISynchronousClient client, NovaLab.ApiClient.Client.IAsynchronousClient asyncClient, NovaLab.ApiClient.Client.IReadableConfiguration configuration)
+        {
+            if (client == null) throw new ArgumentNullException("client");
+            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+            if (configuration == null) throw new ArgumentNullException("configuration");
 
-    /// <summary>
-    ///     Provides a factory method hook for the creation of exceptions.
-    /// </summary>
-    public ExceptionFactory ExceptionFactory {
-        get {
-            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1) {
-                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            this.Client = client;
+            this.AsynchronousClient = asyncClient;
+            this.Configuration = configuration;
+            this.ExceptionFactory = NovaLab.ApiClient.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// The client for accessing this underlying API asynchronously.
+        /// </summary>
+        public NovaLab.ApiClient.Client.IAsynchronousClient AsynchronousClient { get; set; }
+
+        /// <summary>
+        /// The client for accessing this underlying API synchronously.
+        /// </summary>
+        public NovaLab.ApiClient.Client.ISynchronousClient Client { get; set; }
+
+        /// <summary>
+        /// Gets the base path of the API client.
+        /// </summary>
+        /// <value>The base path</value>
+        public string GetBasePath()
+        {
+            return this.Configuration.BasePath;
+        }
+
+        /// <summary>
+        /// Gets or sets the configuration object
+        /// </summary>
+        /// <value>An instance of the Configuration</value>
+        public NovaLab.ApiClient.Client.IReadableConfiguration Configuration { get; set; }
+
+        /// <summary>
+        /// Provides a factory method hook for the creation of exceptions.
+        /// </summary>
+        public NovaLab.ApiClient.Client.ExceptionFactory ExceptionFactory
+        {
+            get
+            {
+                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                {
+                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                }
+                return _exceptionFactory;
             }
-            return _exceptionFactory;
-        }
-        set => _exceptionFactory = value;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>NewFollowerDtoApiResult</returns>
-    public NewFollowerDtoApiResult GetNewFollowers(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0) {
-        ApiResponse<NewFollowerDtoApiResult> localVarResponse = GetNewFollowersWithHttpInfo(userId, goalId, fromDate, limit);
-        return localVarResponse.Data;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
-    public ApiResponse<NewFollowerDtoApiResult> GetNewFollowersWithHttpInfo(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0) {
-        var localVarRequestOptions = new RequestOptions();
-
-        string[] _contentTypes = {
-        };
-
-        // to determine the Accept header
-        string[] _accepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-
-        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
-        if (localVarContentType != null) {
-            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            set { _exceptionFactory = value; }
         }
 
-        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
-        if (localVarAccept != null) {
-            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>NewFollowerDtoApiResult</returns>
+        public NewFollowerDtoApiResult GetNewFollowers(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
+        {
+            NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult> localVarResponse = GetNewFollowersWithHttpInfo(userId, goalId, fromDate, limit);
+            return localVarResponse.Data;
         }
 
-        if (userId != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "user-id", userId));
-        }
-        if (goalId != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "goal-id", goalId));
-        }
-        if (fromDate != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "from-date", fromDate));
-        }
-        if (limit != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "limit", limit));
-        }
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
+        public NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult> GetNewFollowersWithHttpInfo(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
+        {
+            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
 
-        localVarRequestOptions.Operation = "TwitchNewFollowerApi.GetNewFollowers";
-        localVarRequestOptions.OperationIndex = operationIndex;
+            string[] _contentTypes = new string[] {
+            };
 
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
 
-        // make the HTTP request
-        ApiResponse<NewFollowerDtoApiResult>? localVarResponse = Client.Get<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, Configuration);
-        if (ExceptionFactory != null) {
-            Exception _exception = ExceptionFactory("GetNewFollowers", localVarResponse);
-            if (_exception != null) {
-                throw _exception;
+            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
-        }
 
-        return localVarResponse;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of NewFollowerDtoApiResult</returns>
-    public async Task<NewFollowerDtoApiResult> GetNewFollowersAsync(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
-        ApiResponse<NewFollowerDtoApiResult> localVarResponse = await GetNewFollowersWithHttpInfoAsync(userId, goalId, fromDate, limit, operationIndex, cancellationToken).ConfigureAwait(false);
-        return localVarResponse.Data;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="userId"> (optional)</param>
-    /// <param name="goalId"> (optional)</param>
-    /// <param name="fromDate"> (optional)</param>
-    /// <param name="limit"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
-    public async Task<ApiResponse<NewFollowerDtoApiResult>> GetNewFollowersWithHttpInfoAsync(string? userId = default, Guid? goalId = default, DateTime? fromDate = default, int? limit = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
-
-        var localVarRequestOptions = new RequestOptions();
-
-        string[] _contentTypes = {
-        };
-
-        // to determine the Accept header
-        string[] _accepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-
-        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
-        if (localVarContentType != null) {
-            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-        }
-
-        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
-        if (localVarAccept != null) {
-            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-        }
-
-        if (userId != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "user-id", userId));
-        }
-        if (goalId != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "goal-id", goalId));
-        }
-        if (fromDate != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "from-date", fromDate));
-        }
-        if (limit != null) {
-            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "limit", limit));
-        }
-
-        localVarRequestOptions.Operation = "TwitchNewFollowerApi.GetNewFollowers";
-        localVarRequestOptions.OperationIndex = operationIndex;
-
-
-        // make the HTTP request
-        ApiResponse<NewFollowerDtoApiResult>? localVarResponse = await AsynchronousClient.GetAsync<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
-
-        if (ExceptionFactory != null) {
-            Exception _exception = ExceptionFactory("GetNewFollowers", localVarResponse);
-            if (_exception != null) {
-                throw _exception;
+            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
-        }
 
-        return localVarResponse;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>NewFollowerDtoApiResult</returns>
-    public NewFollowerDtoApiResult PostNewFollower(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0) {
-        ApiResponse<NewFollowerDtoApiResult> localVarResponse = PostNewFollowerWithHttpInfo(postNewFollowerDto);
-        return localVarResponse.Data;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
-    public ApiResponse<NewFollowerDtoApiResult> PostNewFollowerWithHttpInfo(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0) {
-        var localVarRequestOptions = new RequestOptions();
-
-        string[] _contentTypes = {
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-
-        // to determine the Accept header
-        string[] _accepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-
-        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
-        if (localVarContentType != null) {
-            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-        }
-
-        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
-        if (localVarAccept != null) {
-            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-        }
-
-        localVarRequestOptions.Data = postNewFollowerDto;
-
-        localVarRequestOptions.Operation = "TwitchNewFollowerApi.PostNewFollower";
-        localVarRequestOptions.OperationIndex = operationIndex;
-
-
-        // make the HTTP request
-        ApiResponse<NewFollowerDtoApiResult>? localVarResponse = Client.Post<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, Configuration);
-        if (ExceptionFactory != null) {
-            Exception _exception = ExceptionFactory("PostNewFollower", localVarResponse);
-            if (_exception != null) {
-                throw _exception;
+            if (userId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "user-id", userId));
             }
-        }
-
-        return localVarResponse;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of NewFollowerDtoApiResult</returns>
-    public async Task<NewFollowerDtoApiResult> PostNewFollowerAsync(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
-        ApiResponse<NewFollowerDtoApiResult> localVarResponse = await PostNewFollowerWithHttpInfoAsync(postNewFollowerDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        return localVarResponse.Data;
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="postNewFollowerDto"> (optional)</param>
-    /// <param name="operationIndex">Index associated with the operation.</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
-    public async Task<ApiResponse<NewFollowerDtoApiResult>> PostNewFollowerWithHttpInfoAsync(PostNewFollowerDto? postNewFollowerDto = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
-
-        var localVarRequestOptions = new RequestOptions();
-
-        string[] _contentTypes = {
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-
-        // to determine the Accept header
-        string[] _accepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-
-        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
-        if (localVarContentType != null) {
-            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-        }
-
-        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
-        if (localVarAccept != null) {
-            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-        }
-
-        localVarRequestOptions.Data = postNewFollowerDto;
-
-        localVarRequestOptions.Operation = "TwitchNewFollowerApi.PostNewFollower";
-        localVarRequestOptions.OperationIndex = operationIndex;
-
-
-        // make the HTTP request
-        ApiResponse<NewFollowerDtoApiResult>? localVarResponse = await AsynchronousClient.PostAsync<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
-
-        if (ExceptionFactory != null) {
-            Exception _exception = ExceptionFactory("PostNewFollower", localVarResponse);
-            if (_exception != null) {
-                throw _exception;
+            if (goalId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "goal-id", goalId));
             }
+            if (fromDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "from-date", fromDate));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            localVarRequestOptions.Operation = "TwitchNewFollowerApi.GetNewFollowers";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetNewFollowers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
-        return localVarResponse;
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of NewFollowerDtoApiResult</returns>
+        public async System.Threading.Tasks.Task<NewFollowerDtoApiResult> GetNewFollowersAsync(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult> localVarResponse = await GetNewFollowersWithHttpInfoAsync(userId, goalId, fromDate, limit, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userId"> (optional)</param>
+        /// <param name="goalId"> (optional)</param>
+        /// <param name="fromDate"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
+        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult>> GetNewFollowersWithHttpInfoAsync(string? userId = default(string?), Guid? goalId = default(Guid?), DateTime? fromDate = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (userId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "user-id", userId));
+            }
+            if (goalId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "goal-id", goalId));
+            }
+            if (fromDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "from-date", fromDate));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            localVarRequestOptions.Operation = "TwitchNewFollowerApi.GetNewFollowers";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetNewFollowers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>NewFollowerDtoApiResult</returns>
+        public NewFollowerDtoApiResult PostNewFollower(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0)
+        {
+            NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult> localVarResponse = PostNewFollowerWithHttpInfo(postNewFollowerDto);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of NewFollowerDtoApiResult</returns>
+        public NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult> PostNewFollowerWithHttpInfo(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0)
+        {
+            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = postNewFollowerDto;
+
+            localVarRequestOptions.Operation = "TwitchNewFollowerApi.PostNewFollower";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostNewFollower", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of NewFollowerDtoApiResult</returns>
+        public async System.Threading.Tasks.Task<NewFollowerDtoApiResult> PostNewFollowerAsync(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult> localVarResponse = await PostNewFollowerWithHttpInfoAsync(postNewFollowerDto, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postNewFollowerDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (NewFollowerDtoApiResult)</returns>
+        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<NewFollowerDtoApiResult>> PostNewFollowerWithHttpInfoAsync(PostNewFollowerDto? postNewFollowerDto = default(PostNewFollowerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = postNewFollowerDto;
+
+            localVarRequestOptions.Operation = "TwitchNewFollowerApi.PostNewFollower";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<NewFollowerDtoApiResult>("/api/twitch/followers/new-follower", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostNewFollower", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
     }
 }

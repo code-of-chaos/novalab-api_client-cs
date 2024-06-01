@@ -26,10 +26,10 @@ using OpenAPIDateConverter = NovaLab.ApiClient.Client.OpenAPIDateConverter;
 namespace NovaLab.ApiClient.Model
 {
     /// <summary>
-    /// ApiResult
+    /// TwitchManagedStreamSubjectDtoApiResult
     /// </summary>
-    [DataContract(Name = "ApiResult")]
-    public partial class ApiResult : IEquatable<ApiResult>, IValidatableObject
+    [DataContract(Name = "TwitchManagedStreamSubjectDtoApiResult")]
+    public partial class TwitchManagedStreamSubjectDtoApiResult : IEquatable<TwitchManagedStreamSubjectDtoApiResult>, IValidatableObject
     {
 
         /// <summary>
@@ -38,12 +38,12 @@ namespace NovaLab.ApiClient.Model
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public HttpStatusCode? Status { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiResult" /> class.
+        /// Initializes a new instance of the <see cref="TwitchManagedStreamSubjectDtoApiResult" /> class.
         /// </summary>
         /// <param name="status">status.</param>
         /// <param name="message">message.</param>
         /// <param name="data">data.</param>
-        public ApiResult(HttpStatusCode? status = default(HttpStatusCode?), string message = default(string), List<Object> data = default(List<Object>))
+        public TwitchManagedStreamSubjectDtoApiResult(HttpStatusCode? status = default(HttpStatusCode?), string message = default(string), List<TwitchManagedStreamSubjectDto> data = default(List<TwitchManagedStreamSubjectDto>))
         {
             this.Status = status;
             this.Message = message;
@@ -60,7 +60,7 @@ namespace NovaLab.ApiClient.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = true)]
-        public List<Object> Data { get; set; }
+        public List<TwitchManagedStreamSubjectDto> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,7 +69,7 @@ namespace NovaLab.ApiClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ApiResult {\n");
+            sb.Append("class TwitchManagedStreamSubjectDtoApiResult {\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
@@ -93,15 +93,15 @@ namespace NovaLab.ApiClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ApiResult);
+            return this.Equals(input as TwitchManagedStreamSubjectDtoApiResult);
         }
 
         /// <summary>
-        /// Returns true if ApiResult instances are equal
+        /// Returns true if TwitchManagedStreamSubjectDtoApiResult instances are equal
         /// </summary>
-        /// <param name="input">Instance of ApiResult to be compared</param>
+        /// <param name="input">Instance of TwitchManagedStreamSubjectDtoApiResult to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiResult input)
+        public bool Equals(TwitchManagedStreamSubjectDtoApiResult input)
         {
             if (input == null)
             {

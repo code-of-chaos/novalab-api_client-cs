@@ -8,179 +8,207 @@
  */
 
 
-using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
+using OpenAPIDateConverter = NovaLab.ApiClient.Client.OpenAPIDateConverter;
 
-namespace NovaLab.ApiClient.Model;
-
-/// <summary>
-///     FollowerGoalDto
-/// </summary>
-[DataContract(Name = "FollowerGoalDto")]
-public class FollowerGoalDto : IEquatable<FollowerGoalDto>, IValidatableObject {
+namespace NovaLab.ApiClient.Model
+{
     /// <summary>
-    ///     Initializes a new instance of the <see cref="FollowerGoalDto" /> class.
+    /// FollowerGoalDto
     /// </summary>
-    /// <param name="userId">userId.</param>
-    /// <param name="twitchBroadcasterId">twitchBroadcasterId.</param>
-    /// <param name="goalId">goalId.</param>
-    /// <param name="dailyGoalAmount">dailyGoalAmount.</param>
-    /// <param name="divider">divider.</param>
-    /// <param name="customCssStyling">customCssStyling.</param>
-    public FollowerGoalDto(string userId = default, string twitchBroadcasterId = default, Guid goalId = default, int dailyGoalAmount = default, string divider = default, string customCssStyling = default) {
-        UserId = userId;
-        TwitchBroadcasterId = twitchBroadcasterId;
-        GoalId = goalId;
-        DailyGoalAmount = dailyGoalAmount;
-        Divider = divider;
-        CustomCssStyling = customCssStyling;
-    }
-
-    /// <summary>
-    ///     Gets or Sets UserId
-    /// </summary>
-    [DataMember(Name = "userId", EmitDefaultValue = true)]
-    public string UserId { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets TwitchBroadcasterId
-    /// </summary>
-    [DataMember(Name = "twitchBroadcasterId", EmitDefaultValue = true)]
-    public string TwitchBroadcasterId { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets GoalId
-    /// </summary>
-    [DataMember(Name = "goalId", EmitDefaultValue = false)]
-    public Guid GoalId { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets DailyGoalAmount
-    /// </summary>
-    [DataMember(Name = "dailyGoalAmount", EmitDefaultValue = false)]
-    public int DailyGoalAmount { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets Divider
-    /// </summary>
-    [DataMember(Name = "divider", EmitDefaultValue = true)]
-    public string Divider { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets CustomCssStyling
-    /// </summary>
-    [DataMember(Name = "customCssStyling", EmitDefaultValue = true)]
-    public string CustomCssStyling { get; set; }
-
-    /// <summary>
-    ///     Returns true if FollowerGoalDto instances are equal
-    /// </summary>
-    /// <param name="input">Instance of FollowerGoalDto to be compared</param>
-    /// <returns>Boolean</returns>
-    public bool Equals(FollowerGoalDto input) {
-        if (input == null) {
-            return false;
-        }
-        return
-            (
-                UserId == input.UserId ||
-                UserId != null &&
-                UserId.Equals(input.UserId)
-            ) &&
-            (
-                TwitchBroadcasterId == input.TwitchBroadcasterId ||
-                TwitchBroadcasterId != null &&
-                TwitchBroadcasterId.Equals(input.TwitchBroadcasterId)
-            ) &&
-            (
-                GoalId == input.GoalId ||
-                GoalId != null &&
-                GoalId.Equals(input.GoalId)
-            ) &&
-            (
-                DailyGoalAmount == input.DailyGoalAmount ||
-                DailyGoalAmount.Equals(input.DailyGoalAmount)
-            ) &&
-            (
-                Divider == input.Divider ||
-                Divider != null &&
-                Divider.Equals(input.Divider)
-            ) &&
-            (
-                CustomCssStyling == input.CustomCssStyling ||
-                CustomCssStyling != null &&
-                CustomCssStyling.Equals(input.CustomCssStyling)
-            );
-    }
-
-    /// <summary>
-    ///     To validate all properties of the instance
-    /// </summary>
-    /// <param name="validationContext">Validation context</param>
-    /// <returns>Validation Result</returns>
-    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {
-        yield break;
-    }
-
-    /// <summary>
-    ///     Returns the string presentation of the object
-    /// </summary>
-    /// <returns>String presentation of the object</returns>
-    public override string ToString() {
-        var sb = new StringBuilder();
-        sb.Append("class FollowerGoalDto {\n");
-        sb.Append("  UserId: ").Append(UserId).Append("\n");
-        sb.Append("  TwitchBroadcasterId: ").Append(TwitchBroadcasterId).Append("\n");
-        sb.Append("  GoalId: ").Append(GoalId).Append("\n");
-        sb.Append("  DailyGoalAmount: ").Append(DailyGoalAmount).Append("\n");
-        sb.Append("  Divider: ").Append(Divider).Append("\n");
-        sb.Append("  CustomCssStyling: ").Append(CustomCssStyling).Append("\n");
-        sb.Append("}\n");
-        return sb.ToString();
-    }
-
-    /// <summary>
-    ///     Returns the JSON string presentation of the object
-    /// </summary>
-    /// <returns>JSON string presentation of the object</returns>
-    public virtual string ToJson() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-    /// <summary>
-    ///     Returns true if objects are equal
-    /// </summary>
-    /// <param name="input">Object to be compared</param>
-    /// <returns>Boolean</returns>
-    public override bool Equals(object input) => Equals(input as FollowerGoalDto);
-
-    /// <summary>
-    ///     Gets the hash code
-    /// </summary>
-    /// <returns>Hash code</returns>
-    public override int GetHashCode() {
-        unchecked// Overflow is fine, just wrap
+    [DataContract(Name = "FollowerGoalDto")]
+    public partial class FollowerGoalDto : IEquatable<FollowerGoalDto>, IValidatableObject
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FollowerGoalDto" /> class.
+        /// </summary>
+        /// <param name="userId">userId.</param>
+        /// <param name="twitchBroadcasterId">twitchBroadcasterId.</param>
+        /// <param name="goalId">goalId.</param>
+        /// <param name="dailyGoalAmount">dailyGoalAmount.</param>
+        /// <param name="divider">divider.</param>
+        /// <param name="customCssStyling">customCssStyling.</param>
+        public FollowerGoalDto(string userId = default(string), string twitchBroadcasterId = default(string), Guid goalId = default(Guid), int dailyGoalAmount = default(int), string divider = default(string), string customCssStyling = default(string))
         {
-            int hashCode = 41;
-            if (UserId != null) {
-                hashCode = hashCode * 59 + UserId.GetHashCode();
+            this.UserId = userId;
+            this.TwitchBroadcasterId = twitchBroadcasterId;
+            this.GoalId = goalId;
+            this.DailyGoalAmount = dailyGoalAmount;
+            this.Divider = divider;
+            this.CustomCssStyling = customCssStyling;
+        }
+
+        /// <summary>
+        /// Gets or Sets UserId
+        /// </summary>
+        [DataMember(Name = "userId", EmitDefaultValue = true)]
+        public string UserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TwitchBroadcasterId
+        /// </summary>
+        [DataMember(Name = "twitchBroadcasterId", EmitDefaultValue = true)]
+        public string TwitchBroadcasterId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GoalId
+        /// </summary>
+        [DataMember(Name = "goalId", EmitDefaultValue = false)]
+        public Guid GoalId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DailyGoalAmount
+        /// </summary>
+        [DataMember(Name = "dailyGoalAmount", EmitDefaultValue = false)]
+        public int DailyGoalAmount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Divider
+        /// </summary>
+        [DataMember(Name = "divider", EmitDefaultValue = true)]
+        public string Divider { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustomCssStyling
+        /// </summary>
+        [DataMember(Name = "customCssStyling", EmitDefaultValue = true)]
+        public string CustomCssStyling { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("class FollowerGoalDto {\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  TwitchBroadcasterId: ").Append(TwitchBroadcasterId).Append("\n");
+            sb.Append("  GoalId: ").Append(GoalId).Append("\n");
+            sb.Append("  DailyGoalAmount: ").Append(DailyGoalAmount).Append("\n");
+            sb.Append("  Divider: ").Append(Divider).Append("\n");
+            sb.Append("  CustomCssStyling: ").Append(CustomCssStyling).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+        }
+
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="input">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object input)
+        {
+            return this.Equals(input as FollowerGoalDto);
+        }
+
+        /// <summary>
+        /// Returns true if FollowerGoalDto instances are equal
+        /// </summary>
+        /// <param name="input">Instance of FollowerGoalDto to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(FollowerGoalDto input)
+        {
+            if (input == null)
+            {
+                return false;
             }
-            if (TwitchBroadcasterId != null) {
-                hashCode = hashCode * 59 + TwitchBroadcasterId.GetHashCode();
+            return 
+                (
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
+                ) && 
+                (
+                    this.TwitchBroadcasterId == input.TwitchBroadcasterId ||
+                    (this.TwitchBroadcasterId != null &&
+                    this.TwitchBroadcasterId.Equals(input.TwitchBroadcasterId))
+                ) && 
+                (
+                    this.GoalId == input.GoalId ||
+                    (this.GoalId != null &&
+                    this.GoalId.Equals(input.GoalId))
+                ) && 
+                (
+                    this.DailyGoalAmount == input.DailyGoalAmount ||
+                    this.DailyGoalAmount.Equals(input.DailyGoalAmount)
+                ) && 
+                (
+                    this.Divider == input.Divider ||
+                    (this.Divider != null &&
+                    this.Divider.Equals(input.Divider))
+                ) && 
+                (
+                    this.CustomCssStyling == input.CustomCssStyling ||
+                    (this.CustomCssStyling != null &&
+                    this.CustomCssStyling.Equals(input.CustomCssStyling))
+                );
+        }
+
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
+        public override int GetHashCode()
+        {
+            unchecked // Overflow is fine, just wrap
+            {
+                int hashCode = 41;
+                if (this.UserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
+                if (this.TwitchBroadcasterId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TwitchBroadcasterId.GetHashCode();
+                }
+                if (this.GoalId != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoalId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DailyGoalAmount.GetHashCode();
+                if (this.Divider != null)
+                {
+                    hashCode = (hashCode * 59) + this.Divider.GetHashCode();
+                }
+                if (this.CustomCssStyling != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustomCssStyling.GetHashCode();
+                }
+                return hashCode;
             }
-            if (GoalId != null) {
-                hashCode = hashCode * 59 + GoalId.GetHashCode();
-            }
-            hashCode = hashCode * 59 + DailyGoalAmount.GetHashCode();
-            if (Divider != null) {
-                hashCode = hashCode * 59 + Divider.GetHashCode();
-            }
-            if (CustomCssStyling != null) {
-                hashCode = hashCode * 59 + CustomCssStyling.GetHashCode();
-            }
-            return hashCode;
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
         }
     }
+
 }

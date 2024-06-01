@@ -8,182 +8,211 @@
  */
 
 
-using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
+using OpenAPIDateConverter = NovaLab.ApiClient.Client.OpenAPIDateConverter;
 
-namespace NovaLab.ApiClient.Model;
-
-/// <summary>
-///     TwitchManagedRewardDto
-/// </summary>
-[DataContract(Name = "TwitchManagedRewardDto")]
-public class TwitchManagedRewardDto : IEquatable<TwitchManagedRewardDto>, IValidatableObject {
+namespace NovaLab.ApiClient.Model
+{
     /// <summary>
-    ///     Initializes a new instance of the <see cref="TwitchManagedRewardDto" /> class.
+    /// TwitchManagedRewardDto
     /// </summary>
-    /// <param name="managedRewardId">managedRewardId.</param>
-    /// <param name="userId">userId.</param>
-    /// <param name="twitchBroadcasterId">twitchBroadcasterId.</param>
-    /// <param name="twitchRewardId">twitchRewardId.</param>
-    /// <param name="outputTemplatePerRedemption">outputTemplatePerRedemption.</param>
-    /// <param name="outputTemplatePerReward">outputTemplatePerReward.</param>
-    public TwitchManagedRewardDto(Guid managedRewardId = default, string userId = default, string twitchBroadcasterId = default, string twitchRewardId = default, string outputTemplatePerRedemption = default, string outputTemplatePerReward = default) {
-        ManagedRewardId = managedRewardId;
-        UserId = userId;
-        TwitchBroadcasterId = twitchBroadcasterId;
-        TwitchRewardId = twitchRewardId;
-        OutputTemplatePerRedemption = outputTemplatePerRedemption;
-        OutputTemplatePerReward = outputTemplatePerReward;
-    }
-
-    /// <summary>
-    ///     Gets or Sets ManagedRewardId
-    /// </summary>
-    [DataMember(Name = "managedRewardId", EmitDefaultValue = false)]
-    public Guid ManagedRewardId { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets UserId
-    /// </summary>
-    [DataMember(Name = "userId", EmitDefaultValue = true)]
-    public string UserId { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets TwitchBroadcasterId
-    /// </summary>
-    [DataMember(Name = "twitchBroadcasterId", EmitDefaultValue = true)]
-    public string TwitchBroadcasterId { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets TwitchRewardId
-    /// </summary>
-    [DataMember(Name = "twitchRewardId", EmitDefaultValue = true)]
-    public string TwitchRewardId { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets OutputTemplatePerRedemption
-    /// </summary>
-    [DataMember(Name = "outputTemplatePerRedemption", EmitDefaultValue = true)]
-    public string OutputTemplatePerRedemption { get; set; }
-
-    /// <summary>
-    ///     Gets or Sets OutputTemplatePerReward
-    /// </summary>
-    [DataMember(Name = "outputTemplatePerReward", EmitDefaultValue = true)]
-    public string OutputTemplatePerReward { get; set; }
-
-    /// <summary>
-    ///     Returns true if TwitchManagedRewardDto instances are equal
-    /// </summary>
-    /// <param name="input">Instance of TwitchManagedRewardDto to be compared</param>
-    /// <returns>Boolean</returns>
-    public bool Equals(TwitchManagedRewardDto input) {
-        if (input == null) {
-            return false;
-        }
-        return
-            (
-                ManagedRewardId == input.ManagedRewardId ||
-                ManagedRewardId != null &&
-                ManagedRewardId.Equals(input.ManagedRewardId)
-            ) &&
-            (
-                UserId == input.UserId ||
-                UserId != null &&
-                UserId.Equals(input.UserId)
-            ) &&
-            (
-                TwitchBroadcasterId == input.TwitchBroadcasterId ||
-                TwitchBroadcasterId != null &&
-                TwitchBroadcasterId.Equals(input.TwitchBroadcasterId)
-            ) &&
-            (
-                TwitchRewardId == input.TwitchRewardId ||
-                TwitchRewardId != null &&
-                TwitchRewardId.Equals(input.TwitchRewardId)
-            ) &&
-            (
-                OutputTemplatePerRedemption == input.OutputTemplatePerRedemption ||
-                OutputTemplatePerRedemption != null &&
-                OutputTemplatePerRedemption.Equals(input.OutputTemplatePerRedemption)
-            ) &&
-            (
-                OutputTemplatePerReward == input.OutputTemplatePerReward ||
-                OutputTemplatePerReward != null &&
-                OutputTemplatePerReward.Equals(input.OutputTemplatePerReward)
-            );
-    }
-
-    /// <summary>
-    ///     To validate all properties of the instance
-    /// </summary>
-    /// <param name="validationContext">Validation context</param>
-    /// <returns>Validation Result</returns>
-    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {
-        yield break;
-    }
-
-    /// <summary>
-    ///     Returns the string presentation of the object
-    /// </summary>
-    /// <returns>String presentation of the object</returns>
-    public override string ToString() {
-        var sb = new StringBuilder();
-        sb.Append("class TwitchManagedRewardDto {\n");
-        sb.Append("  ManagedRewardId: ").Append(ManagedRewardId).Append("\n");
-        sb.Append("  UserId: ").Append(UserId).Append("\n");
-        sb.Append("  TwitchBroadcasterId: ").Append(TwitchBroadcasterId).Append("\n");
-        sb.Append("  TwitchRewardId: ").Append(TwitchRewardId).Append("\n");
-        sb.Append("  OutputTemplatePerRedemption: ").Append(OutputTemplatePerRedemption).Append("\n");
-        sb.Append("  OutputTemplatePerReward: ").Append(OutputTemplatePerReward).Append("\n");
-        sb.Append("}\n");
-        return sb.ToString();
-    }
-
-    /// <summary>
-    ///     Returns the JSON string presentation of the object
-    /// </summary>
-    /// <returns>JSON string presentation of the object</returns>
-    public virtual string ToJson() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-    /// <summary>
-    ///     Returns true if objects are equal
-    /// </summary>
-    /// <param name="input">Object to be compared</param>
-    /// <returns>Boolean</returns>
-    public override bool Equals(object input) => Equals(input as TwitchManagedRewardDto);
-
-    /// <summary>
-    ///     Gets the hash code
-    /// </summary>
-    /// <returns>Hash code</returns>
-    public override int GetHashCode() {
-        unchecked// Overflow is fine, just wrap
+    [DataContract(Name = "TwitchManagedRewardDto")]
+    public partial class TwitchManagedRewardDto : IEquatable<TwitchManagedRewardDto>, IValidatableObject
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitchManagedRewardDto" /> class.
+        /// </summary>
+        /// <param name="managedRewardId">managedRewardId.</param>
+        /// <param name="userId">userId.</param>
+        /// <param name="twitchBroadcasterId">twitchBroadcasterId.</param>
+        /// <param name="twitchRewardId">twitchRewardId.</param>
+        /// <param name="outputTemplatePerRedemption">outputTemplatePerRedemption.</param>
+        /// <param name="outputTemplatePerReward">outputTemplatePerReward.</param>
+        public TwitchManagedRewardDto(Guid managedRewardId = default(Guid), string userId = default(string), string twitchBroadcasterId = default(string), string twitchRewardId = default(string), string outputTemplatePerRedemption = default(string), string outputTemplatePerReward = default(string))
         {
-            int hashCode = 41;
-            if (ManagedRewardId != null) {
-                hashCode = hashCode * 59 + ManagedRewardId.GetHashCode();
+            this.ManagedRewardId = managedRewardId;
+            this.UserId = userId;
+            this.TwitchBroadcasterId = twitchBroadcasterId;
+            this.TwitchRewardId = twitchRewardId;
+            this.OutputTemplatePerRedemption = outputTemplatePerRedemption;
+            this.OutputTemplatePerReward = outputTemplatePerReward;
+        }
+
+        /// <summary>
+        /// Gets or Sets ManagedRewardId
+        /// </summary>
+        [DataMember(Name = "managedRewardId", EmitDefaultValue = false)]
+        public Guid ManagedRewardId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UserId
+        /// </summary>
+        [DataMember(Name = "userId", EmitDefaultValue = true)]
+        public string UserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TwitchBroadcasterId
+        /// </summary>
+        [DataMember(Name = "twitchBroadcasterId", EmitDefaultValue = true)]
+        public string TwitchBroadcasterId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TwitchRewardId
+        /// </summary>
+        [DataMember(Name = "twitchRewardId", EmitDefaultValue = true)]
+        public string TwitchRewardId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OutputTemplatePerRedemption
+        /// </summary>
+        [DataMember(Name = "outputTemplatePerRedemption", EmitDefaultValue = true)]
+        public string OutputTemplatePerRedemption { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OutputTemplatePerReward
+        /// </summary>
+        [DataMember(Name = "outputTemplatePerReward", EmitDefaultValue = true)]
+        public string OutputTemplatePerReward { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("class TwitchManagedRewardDto {\n");
+            sb.Append("  ManagedRewardId: ").Append(ManagedRewardId).Append("\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  TwitchBroadcasterId: ").Append(TwitchBroadcasterId).Append("\n");
+            sb.Append("  TwitchRewardId: ").Append(TwitchRewardId).Append("\n");
+            sb.Append("  OutputTemplatePerRedemption: ").Append(OutputTemplatePerRedemption).Append("\n");
+            sb.Append("  OutputTemplatePerReward: ").Append(OutputTemplatePerReward).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+        }
+
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="input">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object input)
+        {
+            return this.Equals(input as TwitchManagedRewardDto);
+        }
+
+        /// <summary>
+        /// Returns true if TwitchManagedRewardDto instances are equal
+        /// </summary>
+        /// <param name="input">Instance of TwitchManagedRewardDto to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(TwitchManagedRewardDto input)
+        {
+            if (input == null)
+            {
+                return false;
             }
-            if (UserId != null) {
-                hashCode = hashCode * 59 + UserId.GetHashCode();
+            return 
+                (
+                    this.ManagedRewardId == input.ManagedRewardId ||
+                    (this.ManagedRewardId != null &&
+                    this.ManagedRewardId.Equals(input.ManagedRewardId))
+                ) && 
+                (
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
+                ) && 
+                (
+                    this.TwitchBroadcasterId == input.TwitchBroadcasterId ||
+                    (this.TwitchBroadcasterId != null &&
+                    this.TwitchBroadcasterId.Equals(input.TwitchBroadcasterId))
+                ) && 
+                (
+                    this.TwitchRewardId == input.TwitchRewardId ||
+                    (this.TwitchRewardId != null &&
+                    this.TwitchRewardId.Equals(input.TwitchRewardId))
+                ) && 
+                (
+                    this.OutputTemplatePerRedemption == input.OutputTemplatePerRedemption ||
+                    (this.OutputTemplatePerRedemption != null &&
+                    this.OutputTemplatePerRedemption.Equals(input.OutputTemplatePerRedemption))
+                ) && 
+                (
+                    this.OutputTemplatePerReward == input.OutputTemplatePerReward ||
+                    (this.OutputTemplatePerReward != null &&
+                    this.OutputTemplatePerReward.Equals(input.OutputTemplatePerReward))
+                );
+        }
+
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
+        public override int GetHashCode()
+        {
+            unchecked // Overflow is fine, just wrap
+            {
+                int hashCode = 41;
+                if (this.ManagedRewardId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ManagedRewardId.GetHashCode();
+                }
+                if (this.UserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
+                if (this.TwitchBroadcasterId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TwitchBroadcasterId.GetHashCode();
+                }
+                if (this.TwitchRewardId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TwitchRewardId.GetHashCode();
+                }
+                if (this.OutputTemplatePerRedemption != null)
+                {
+                    hashCode = (hashCode * 59) + this.OutputTemplatePerRedemption.GetHashCode();
+                }
+                if (this.OutputTemplatePerReward != null)
+                {
+                    hashCode = (hashCode * 59) + this.OutputTemplatePerReward.GetHashCode();
+                }
+                return hashCode;
             }
-            if (TwitchBroadcasterId != null) {
-                hashCode = hashCode * 59 + TwitchBroadcasterId.GetHashCode();
-            }
-            if (TwitchRewardId != null) {
-                hashCode = hashCode * 59 + TwitchRewardId.GetHashCode();
-            }
-            if (OutputTemplatePerRedemption != null) {
-                hashCode = hashCode * 59 + OutputTemplatePerRedemption.GetHashCode();
-            }
-            if (OutputTemplatePerReward != null) {
-                hashCode = hashCode * 59 + OutputTemplatePerReward.GetHashCode();
-            }
-            return hashCode;
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
         }
     }
+
 }

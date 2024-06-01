@@ -26,24 +26,26 @@ using OpenAPIDateConverter = NovaLab.ApiClient.Client.OpenAPIDateConverter;
 namespace NovaLab.ApiClient.Model
 {
     /// <summary>
-    /// PostManagedRewardDto
+    /// PostTwitchManagedStreamSubjectDto
     /// </summary>
-    [DataContract(Name = "PostManagedRewardDto")]
-    public partial class PostManagedRewardDto : IEquatable<PostManagedRewardDto>, IValidatableObject
+    [DataContract(Name = "PostTwitchManagedStreamSubjectDto")]
+    public partial class PostTwitchManagedStreamSubjectDto : IEquatable<PostTwitchManagedStreamSubjectDto>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostManagedRewardDto" /> class.
+        /// Initializes a new instance of the <see cref="PostTwitchManagedStreamSubjectDto" /> class.
         /// </summary>
         /// <param name="userId">userId.</param>
-        /// <param name="twitchApiRequest">twitchApiRequest.</param>
-        /// <param name="outputTemplatePerReward">outputTemplatePerReward.</param>
-        /// <param name="outputTemplatePerRedemption">outputTemplatePerRedemption.</param>
-        public PostManagedRewardDto(string userId = default(string), CreateCustomRewardsRequest twitchApiRequest = default(CreateCustomRewardsRequest), string outputTemplatePerReward = default(string), string outputTemplatePerRedemption = default(string))
+        /// <param name="selectionName">selectionName.</param>
+        /// <param name="obsSubjectTitle">obsSubjectTitle.</param>
+        /// <param name="twitchSubjectTitle">twitchSubjectTitle.</param>
+        /// <param name="autoSelect">autoSelect.</param>
+        public PostTwitchManagedStreamSubjectDto(string userId = default(string), string selectionName = default(string), string obsSubjectTitle = default(string), string twitchSubjectTitle = default(string), bool autoSelect = default(bool))
         {
             this.UserId = userId;
-            this.TwitchApiRequest = twitchApiRequest;
-            this.OutputTemplatePerReward = outputTemplatePerReward;
-            this.OutputTemplatePerRedemption = outputTemplatePerRedemption;
+            this.SelectionName = selectionName;
+            this.ObsSubjectTitle = obsSubjectTitle;
+            this.TwitchSubjectTitle = twitchSubjectTitle;
+            this.AutoSelect = autoSelect;
         }
 
         /// <summary>
@@ -53,22 +55,28 @@ namespace NovaLab.ApiClient.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets TwitchApiRequest
+        /// Gets or Sets SelectionName
         /// </summary>
-        [DataMember(Name = "twitchApiRequest", EmitDefaultValue = false)]
-        public CreateCustomRewardsRequest TwitchApiRequest { get; set; }
+        [DataMember(Name = "selectionName", EmitDefaultValue = true)]
+        public string SelectionName { get; set; }
 
         /// <summary>
-        /// Gets or Sets OutputTemplatePerReward
+        /// Gets or Sets ObsSubjectTitle
         /// </summary>
-        [DataMember(Name = "outputTemplatePerReward", EmitDefaultValue = true)]
-        public string OutputTemplatePerReward { get; set; }
+        [DataMember(Name = "obsSubjectTitle", EmitDefaultValue = true)]
+        public string ObsSubjectTitle { get; set; }
 
         /// <summary>
-        /// Gets or Sets OutputTemplatePerRedemption
+        /// Gets or Sets TwitchSubjectTitle
         /// </summary>
-        [DataMember(Name = "outputTemplatePerRedemption", EmitDefaultValue = true)]
-        public string OutputTemplatePerRedemption { get; set; }
+        [DataMember(Name = "twitchSubjectTitle", EmitDefaultValue = true)]
+        public string TwitchSubjectTitle { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AutoSelect
+        /// </summary>
+        [DataMember(Name = "autoSelect", EmitDefaultValue = true)]
+        public bool AutoSelect { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,11 +85,12 @@ namespace NovaLab.ApiClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class PostManagedRewardDto {\n");
+            sb.Append("class PostTwitchManagedStreamSubjectDto {\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  TwitchApiRequest: ").Append(TwitchApiRequest).Append("\n");
-            sb.Append("  OutputTemplatePerReward: ").Append(OutputTemplatePerReward).Append("\n");
-            sb.Append("  OutputTemplatePerRedemption: ").Append(OutputTemplatePerRedemption).Append("\n");
+            sb.Append("  SelectionName: ").Append(SelectionName).Append("\n");
+            sb.Append("  ObsSubjectTitle: ").Append(ObsSubjectTitle).Append("\n");
+            sb.Append("  TwitchSubjectTitle: ").Append(TwitchSubjectTitle).Append("\n");
+            sb.Append("  AutoSelect: ").Append(AutoSelect).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,15 +111,15 @@ namespace NovaLab.ApiClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PostManagedRewardDto);
+            return this.Equals(input as PostTwitchManagedStreamSubjectDto);
         }
 
         /// <summary>
-        /// Returns true if PostManagedRewardDto instances are equal
+        /// Returns true if PostTwitchManagedStreamSubjectDto instances are equal
         /// </summary>
-        /// <param name="input">Instance of PostManagedRewardDto to be compared</param>
+        /// <param name="input">Instance of PostTwitchManagedStreamSubjectDto to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PostManagedRewardDto input)
+        public bool Equals(PostTwitchManagedStreamSubjectDto input)
         {
             if (input == null)
             {
@@ -123,19 +132,23 @@ namespace NovaLab.ApiClient.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.TwitchApiRequest == input.TwitchApiRequest ||
-                    (this.TwitchApiRequest != null &&
-                    this.TwitchApiRequest.Equals(input.TwitchApiRequest))
+                    this.SelectionName == input.SelectionName ||
+                    (this.SelectionName != null &&
+                    this.SelectionName.Equals(input.SelectionName))
                 ) && 
                 (
-                    this.OutputTemplatePerReward == input.OutputTemplatePerReward ||
-                    (this.OutputTemplatePerReward != null &&
-                    this.OutputTemplatePerReward.Equals(input.OutputTemplatePerReward))
+                    this.ObsSubjectTitle == input.ObsSubjectTitle ||
+                    (this.ObsSubjectTitle != null &&
+                    this.ObsSubjectTitle.Equals(input.ObsSubjectTitle))
                 ) && 
                 (
-                    this.OutputTemplatePerRedemption == input.OutputTemplatePerRedemption ||
-                    (this.OutputTemplatePerRedemption != null &&
-                    this.OutputTemplatePerRedemption.Equals(input.OutputTemplatePerRedemption))
+                    this.TwitchSubjectTitle == input.TwitchSubjectTitle ||
+                    (this.TwitchSubjectTitle != null &&
+                    this.TwitchSubjectTitle.Equals(input.TwitchSubjectTitle))
+                ) && 
+                (
+                    this.AutoSelect == input.AutoSelect ||
+                    this.AutoSelect.Equals(input.AutoSelect)
                 );
         }
 
@@ -152,18 +165,19 @@ namespace NovaLab.ApiClient.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                if (this.TwitchApiRequest != null)
+                if (this.SelectionName != null)
                 {
-                    hashCode = (hashCode * 59) + this.TwitchApiRequest.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SelectionName.GetHashCode();
                 }
-                if (this.OutputTemplatePerReward != null)
+                if (this.ObsSubjectTitle != null)
                 {
-                    hashCode = (hashCode * 59) + this.OutputTemplatePerReward.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ObsSubjectTitle.GetHashCode();
                 }
-                if (this.OutputTemplatePerRedemption != null)
+                if (this.TwitchSubjectTitle != null)
                 {
-                    hashCode = (hashCode * 59) + this.OutputTemplatePerRedemption.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TwitchSubjectTitle.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.AutoSelect.GetHashCode();
                 return hashCode;
             }
         }
