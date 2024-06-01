@@ -8,740 +8,647 @@
  */
 
 
-using System;
 using NovaLab.ApiClient.Client;
 using NovaLab.ApiClient.Model;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace NovaLab.ApiClient.Api
-{
+namespace NovaLab.ApiClient.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITwitchManagedRewardApiSync : IApiAccessor {
+    #region Synchronous Operations
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TwitchManagedRewardDtoApiResult</returns>
+    TwitchManagedRewardDtoApiResult GetManagedRewards(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0);
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ITwitchManagedRewardApiSync : IApiAccessor
-    {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TwitchManagedRewardApiResult</returns>
-        TwitchManagedRewardApiResult GetManagedRewards(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0);
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TwitchManagedRewardDtoApiResult</returns>
+    ApiResponse<TwitchManagedRewardDtoApiResult> GetManagedRewardsWithHttpInfo(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0);
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TwitchManagedRewardDtoApiResult</returns>
+    TwitchManagedRewardDtoApiResult PostManagedReward(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TwitchManagedRewardApiResult</returns>
-        ApiResponse<TwitchManagedRewardApiResult> GetManagedRewardsWithHttpInfo(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResult</returns>
-        ApiResult PostManagedReward(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0);
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TwitchManagedRewardDtoApiResult</returns>
+    ApiResponse<TwitchManagedRewardDtoApiResult> PostManagedRewardWithHttpInfo(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0);
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResult</returns>
+    ApiResult PostNewLastCleared(string? managedRewardId = default, int operationIndex = 0);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ApiResult</returns>
-        ApiResponse<ApiResult> PostManagedRewardWithHttpInfo(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResult</returns>
-        ApiResult PostNewLastCleared(string? managedRewardId = default(string?), int operationIndex = 0);
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ApiResult</returns>
+    ApiResponse<ApiResult> PostNewLastClearedWithHttpInfo(string? managedRewardId = default, int operationIndex = 0);
+    #endregion Synchronous Operations
+}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ApiResult</returns>
-        ApiResponse<ApiResult> PostNewLastClearedWithHttpInfo(string? managedRewardId = default(string?), int operationIndex = 0);
-        #endregion Synchronous Operations
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITwitchManagedRewardApiAsync : IApiAccessor {
+    #region Asynchronous Operations
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TwitchManagedRewardDtoApiResult</returns>
+    Task<TwitchManagedRewardDtoApiResult> GetManagedRewardsAsync(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TwitchManagedRewardDtoApiResult)</returns>
+    Task<ApiResponse<TwitchManagedRewardDtoApiResult>> GetManagedRewardsWithHttpInfoAsync(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TwitchManagedRewardDtoApiResult</returns>
+    Task<TwitchManagedRewardDtoApiResult> PostManagedRewardAsync(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TwitchManagedRewardDtoApiResult)</returns>
+    Task<ApiResponse<TwitchManagedRewardDtoApiResult>> PostManagedRewardWithHttpInfoAsync(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResult</returns>
+    Task<ApiResult> PostNewLastClearedAsync(string? managedRewardId = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ApiResult)</returns>
+    Task<ApiResponse<ApiResult>> PostNewLastClearedWithHttpInfoAsync(string? managedRewardId = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITwitchManagedRewardApi : ITwitchManagedRewardApiSync, ITwitchManagedRewardApiAsync {
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class TwitchManagedRewardApi : ITwitchManagedRewardApi {
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="TwitchManagedRewardApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public TwitchManagedRewardApi() : this((string)null) {
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TwitchManagedRewardApi" /> class.
     /// </summary>
-    public interface ITwitchManagedRewardApiAsync : IApiAccessor
-    {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TwitchManagedRewardApiResult</returns>
-        System.Threading.Tasks.Task<TwitchManagedRewardApiResult> GetManagedRewardsAsync(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TwitchManagedRewardApiResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TwitchManagedRewardApiResult>> GetManagedRewardsWithHttpInfoAsync(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResult</returns>
-        System.Threading.Tasks.Task<ApiResult> PostManagedRewardAsync(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ApiResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiResult>> PostManagedRewardWithHttpInfoAsync(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResult</returns>
-        System.Threading.Tasks.Task<ApiResult> PostNewLastClearedAsync(string? managedRewardId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ApiResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiResult>> PostNewLastClearedWithHttpInfoAsync(string? managedRewardId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+    /// <returns></returns>
+    public TwitchManagedRewardApi(string basePath) {
+        Configuration = ApiClient.Client.Configuration.MergeConfigurations(
+        GlobalConfiguration.Instance,
+        new Configuration { BasePath = basePath }
+        );
+        Client = new Client.ApiClient(Configuration.BasePath);
+        AsynchronousClient = new Client.ApiClient(Configuration.BasePath);
+        ExceptionFactory = ApiClient.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TwitchManagedRewardApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface ITwitchManagedRewardApi : ITwitchManagedRewardApiSync, ITwitchManagedRewardApiAsync
-    {
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public TwitchManagedRewardApi(Configuration configuration) {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = ApiClient.Client.Configuration.MergeConfigurations(
+        GlobalConfiguration.Instance,
+        configuration
+        );
+        Client = new Client.ApiClient(Configuration.BasePath);
+        AsynchronousClient = new Client.ApiClient(Configuration.BasePath);
+        ExceptionFactory = ApiClient.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TwitchManagedRewardApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class TwitchManagedRewardApi : ITwitchManagedRewardApi
-    {
-        private NovaLab.ApiClient.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public TwitchManagedRewardApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration) {
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedRewardApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public TwitchManagedRewardApi() : this((string)null)
-        {
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = ApiClient.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath() => Configuration.BasePath;
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory {
+        get {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1) {
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            }
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TwitchManagedRewardDtoApiResult</returns>
+    public TwitchManagedRewardDtoApiResult GetManagedRewards(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0) {
+        ApiResponse<TwitchManagedRewardDtoApiResult> localVarResponse = GetManagedRewardsWithHttpInfo(userId, limit, includeInvalid);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TwitchManagedRewardDtoApiResult</returns>
+    public ApiResponse<TwitchManagedRewardDtoApiResult> GetManagedRewardsWithHttpInfo(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0) {
+        var localVarRequestOptions = new RequestOptions();
+
+        string[] _contentTypes = {
+        };
+
+        // to determine the Accept header
+        string[] _accepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null) {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedRewardApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public TwitchManagedRewardApi(string basePath)
-        {
-            this.Configuration = NovaLab.ApiClient.Client.Configuration.MergeConfigurations(
-                NovaLab.ApiClient.Client.GlobalConfiguration.Instance,
-                new NovaLab.ApiClient.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = NovaLab.ApiClient.Client.Configuration.DefaultExceptionFactory;
+        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedRewardApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public TwitchManagedRewardApi(NovaLab.ApiClient.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            this.Configuration = NovaLab.ApiClient.Client.Configuration.MergeConfigurations(
-                NovaLab.ApiClient.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new NovaLab.ApiClient.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = NovaLab.ApiClient.Client.Configuration.DefaultExceptionFactory;
+        if (userId != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "userId", userId));
+        }
+        if (limit != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "limit", limit));
+        }
+        if (includeInvalid != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "include-invalid", includeInvalid));
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedRewardApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public TwitchManagedRewardApi(NovaLab.ApiClient.Client.ISynchronousClient client, NovaLab.ApiClient.Client.IAsynchronousClient asyncClient, NovaLab.ApiClient.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        localVarRequestOptions.Operation = "TwitchManagedRewardApi.GetManagedRewards";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = NovaLab.ApiClient.Client.Configuration.DefaultExceptionFactory;
+
+        // make the HTTP request
+        ApiResponse<TwitchManagedRewardDtoApiResult>? localVarResponse = Client.Get<TwitchManagedRewardDtoApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null) {
+            Exception _exception = ExceptionFactory("GetManagedRewards", localVarResponse);
+            if (_exception != null) {
+                throw _exception;
+            }
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public NovaLab.ApiClient.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public NovaLab.ApiClient.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TwitchManagedRewardDtoApiResult</returns>
+    public async Task<TwitchManagedRewardDtoApiResult> GetManagedRewardsAsync(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
+        ApiResponse<TwitchManagedRewardDtoApiResult> localVarResponse = await GetManagedRewardsWithHttpInfoAsync(userId, limit, includeInvalid, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
-        {
-            return this.Configuration.BasePath;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="userId"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="includeInvalid"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TwitchManagedRewardDtoApiResult)</returns>
+    public async Task<ApiResponse<TwitchManagedRewardDtoApiResult>> GetManagedRewardsWithHttpInfoAsync(string? userId = default, int? limit = default, bool? includeInvalid = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
+
+        var localVarRequestOptions = new RequestOptions();
+
+        string[] _contentTypes = {
+        };
+
+        // to determine the Accept header
+        string[] _accepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null) {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public NovaLab.ApiClient.Client.IReadableConfiguration Configuration { get; set; }
-
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public NovaLab.ApiClient.Client.ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TwitchManagedRewardApiResult</returns>
-        public TwitchManagedRewardApiResult GetManagedRewards(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0)
-        {
-            NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardApiResult> localVarResponse = GetManagedRewardsWithHttpInfo(userId, limit);
-            return localVarResponse.Data;
+        if (userId != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "userId", userId));
+        }
+        if (limit != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "limit", limit));
+        }
+        if (includeInvalid != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "include-invalid", includeInvalid));
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TwitchManagedRewardApiResult</returns>
-        public NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardApiResult> GetManagedRewardsWithHttpInfo(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0)
-        {
-            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
+        localVarRequestOptions.Operation = "TwitchManagedRewardApi.GetManagedRewards";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
-            string[] _contentTypes = new string[] {
-            };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        // make the HTTP request
+        ApiResponse<TwitchManagedRewardDtoApiResult>? localVarResponse = await AsynchronousClient.GetAsync<TwitchManagedRewardDtoApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+        if (ExceptionFactory != null) {
+            Exception _exception = ExceptionFactory("GetManagedRewards", localVarResponse);
+            if (_exception != null) {
+                throw _exception;
             }
-
-            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (userId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "userId", userId));
-            }
-            if (limit != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
-            }
-
-            localVarRequestOptions.Operation = "TwitchManagedRewardApi.GetManagedRewards";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<TwitchManagedRewardApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetManagedRewards", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TwitchManagedRewardApiResult</returns>
-        public async System.Threading.Tasks.Task<TwitchManagedRewardApiResult> GetManagedRewardsAsync(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardApiResult> localVarResponse = await GetManagedRewardsWithHttpInfoAsync(userId, limit, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TwitchManagedRewardDtoApiResult</returns>
+    public TwitchManagedRewardDtoApiResult PostManagedReward(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0) {
+        ApiResponse<TwitchManagedRewardDtoApiResult> localVarResponse = PostManagedRewardWithHttpInfo(postManagedRewardDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TwitchManagedRewardDtoApiResult</returns>
+    public ApiResponse<TwitchManagedRewardDtoApiResult> PostManagedRewardWithHttpInfo(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0) {
+        var localVarRequestOptions = new RequestOptions();
+
+        string[] _contentTypes = {
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        string[] _accepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null) {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TwitchManagedRewardApiResult)</returns>
-        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<TwitchManagedRewardApiResult>> GetManagedRewardsWithHttpInfoAsync(string? userId = default(string?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (userId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "userId", userId));
-            }
-            if (limit != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
-            }
-
-            localVarRequestOptions.Operation = "TwitchManagedRewardApi.GetManagedRewards";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<TwitchManagedRewardApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetManagedRewards", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResult</returns>
-        public ApiResult PostManagedReward(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0)
-        {
-            NovaLab.ApiClient.Client.ApiResponse<ApiResult> localVarResponse = PostManagedRewardWithHttpInfo(userId, postManagedRewardDto);
-            return localVarResponse.Data;
+        localVarRequestOptions.Data = postManagedRewardDto;
+
+        localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostManagedReward";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        ApiResponse<TwitchManagedRewardDtoApiResult>? localVarResponse = Client.Post<TwitchManagedRewardDtoApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null) {
+            Exception _exception = ExceptionFactory("PostManagedReward", localVarResponse);
+            if (_exception != null) {
+                throw _exception;
+            }
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ApiResult</returns>
-        public NovaLab.ApiClient.Client.ApiResponse<ApiResult> PostManagedRewardWithHttpInfo(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0)
-        {
-            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
+        return localVarResponse;
+    }
 
-            string[] _contentTypes = new string[] {
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TwitchManagedRewardDtoApiResult</returns>
+    public async Task<TwitchManagedRewardDtoApiResult> PostManagedRewardAsync(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
+        ApiResponse<TwitchManagedRewardDtoApiResult> localVarResponse = await PostManagedRewardWithHttpInfoAsync(postManagedRewardDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postManagedRewardDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TwitchManagedRewardDtoApiResult)</returns>
+    public async Task<ApiResponse<TwitchManagedRewardDtoApiResult>> PostManagedRewardWithHttpInfoAsync(PostManagedRewardDto? postManagedRewardDto = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
 
-            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        var localVarRequestOptions = new RequestOptions();
 
-            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+        string[] _contentTypes = {
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            if (userId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "userId", userId));
-            }
-            localVarRequestOptions.Data = postManagedRewardDto;
+        // to determine the Accept header
+        string[] _accepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostManagedReward";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<ApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("PostManagedReward", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null) {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResult</returns>
-        public async System.Threading.Tasks.Task<ApiResult> PostManagedRewardAsync(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            NovaLab.ApiClient.Client.ApiResponse<ApiResult> localVarResponse = await PostManagedRewardWithHttpInfoAsync(userId, postManagedRewardDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"> (optional)</param>
-        /// <param name="postManagedRewardDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ApiResult)</returns>
-        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<ApiResult>> PostManagedRewardWithHttpInfoAsync(string? userId = default(string?), PostManagedRewardDto? postManagedRewardDto = default(PostManagedRewardDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
+        localVarRequestOptions.Data = postManagedRewardDto;
 
-            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
+        localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostManagedReward";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
-            string[] _contentTypes = new string[] {
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        // make the HTTP request
+        ApiResponse<TwitchManagedRewardDtoApiResult>? localVarResponse = await AsynchronousClient.PostAsync<TwitchManagedRewardDtoApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+        if (ExceptionFactory != null) {
+            Exception _exception = ExceptionFactory("PostManagedReward", localVarResponse);
+            if (_exception != null) {
+                throw _exception;
             }
-
-            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (userId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "userId", userId));
-            }
-            localVarRequestOptions.Data = postManagedRewardDto;
-
-            localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostManagedReward";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ApiResult>("/api/twitch/managed-rewards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("PostManagedReward", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResult</returns>
-        public ApiResult PostNewLastCleared(string? managedRewardId = default(string?), int operationIndex = 0)
-        {
-            NovaLab.ApiClient.Client.ApiResponse<ApiResult> localVarResponse = PostNewLastClearedWithHttpInfo(managedRewardId);
-            return localVarResponse.Data;
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResult</returns>
+    public ApiResult PostNewLastCleared(string? managedRewardId = default, int operationIndex = 0) {
+        ApiResponse<ApiResult> localVarResponse = PostNewLastClearedWithHttpInfo(managedRewardId);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ApiResult</returns>
+    public ApiResponse<ApiResult> PostNewLastClearedWithHttpInfo(string? managedRewardId = default, int operationIndex = 0) {
+        var localVarRequestOptions = new RequestOptions();
+
+        string[] _contentTypes = {
+        };
+
+        // to determine the Accept header
+        string[] _accepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null) {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ApiResult</returns>
-        public NovaLab.ApiClient.Client.ApiResponse<ApiResult> PostNewLastClearedWithHttpInfo(string? managedRewardId = default(string?), int operationIndex = 0)
-        {
-            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (managedRewardId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "managedRewardId", managedRewardId));
-            }
-
-            localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostNewLastCleared";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<ApiResult>("/api/twitch/managed-rewards/clear", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("PostNewLastCleared", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResult</returns>
-        public async System.Threading.Tasks.Task<ApiResult> PostNewLastClearedAsync(string? managedRewardId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            NovaLab.ApiClient.Client.ApiResponse<ApiResult> localVarResponse = await PostNewLastClearedWithHttpInfoAsync(managedRewardId, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        if (managedRewardId != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "managedRewardId", managedRewardId));
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="managedRewardId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ApiResult)</returns>
-        public async System.Threading.Tasks.Task<NovaLab.ApiClient.Client.ApiResponse<ApiResult>> PostNewLastClearedWithHttpInfoAsync(string? managedRewardId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
+        localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostNewLastCleared";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
-            NovaLab.ApiClient.Client.RequestOptions localVarRequestOptions = new NovaLab.ApiClient.Client.RequestOptions();
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+        // make the HTTP request
+        ApiResponse<ApiResult>? localVarResponse = Client.Post<ApiResult>("/api/twitch/managed-rewards/clear", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null) {
+            Exception _exception = ExceptionFactory("PostNewLastCleared", localVarResponse);
+            if (_exception != null) {
+                throw _exception;
             }
-
-            var localVarAccept = NovaLab.ApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (managedRewardId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(NovaLab.ApiClient.Client.ClientUtils.ParameterToMultiMap("", "managedRewardId", managedRewardId));
-            }
-
-            localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostNewLastCleared";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ApiResult>("/api/twitch/managed-rewards/clear", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("PostNewLastCleared", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
         }
 
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResult</returns>
+    public async Task<ApiResult> PostNewLastClearedAsync(string? managedRewardId = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
+        ApiResponse<ApiResult> localVarResponse = await PostNewLastClearedWithHttpInfoAsync(managedRewardId, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="NovaLab.ApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="managedRewardId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ApiResult)</returns>
+    public async Task<ApiResponse<ApiResult>> PostNewLastClearedWithHttpInfoAsync(string? managedRewardId = default, int operationIndex = 0, CancellationToken cancellationToken = default) {
+
+        var localVarRequestOptions = new RequestOptions();
+
+        string[] _contentTypes = {
+        };
+
+        // to determine the Accept header
+        string[] _accepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        string? localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null) {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+        }
+
+        string? localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+        }
+
+        if (managedRewardId != null) {
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "managedRewardId", managedRewardId));
+        }
+
+        localVarRequestOptions.Operation = "TwitchManagedRewardApi.PostNewLastCleared";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        ApiResponse<ApiResult>? localVarResponse = await AsynchronousClient.PostAsync<ApiResult>("/api/twitch/managed-rewards/clear", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null) {
+            Exception _exception = ExceptionFactory("PostNewLastCleared", localVarResponse);
+            if (_exception != null) {
+                throw _exception;
+            }
+        }
+
+        return localVarResponse;
     }
 }

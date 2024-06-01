@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **LockoutEnabled** | **bool** |  | [optional] 
 **AccessFailedCount** | **int** |  | [optional] 
 **TwitchBroadcasterId** | **string** |  | [optional] 
+**TwitchFollowerGoal** | [**TwitchFollowerGoal**](TwitchFollowerGoal.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

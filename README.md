@@ -117,11 +117,15 @@ Class | Method | HTTP request | Description
 *NovaLabVersion1000CultureneutralPublicKeyTokennullApi* | [**AccountManageDownloadPersonalDataPost**](docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md#accountmanagedownloadpersonaldatapost) | **POST** /Account/Manage/DownloadPersonalData | 
 *NovaLabVersion1000CultureneutralPublicKeyTokennullApi* | [**AccountManageLinkExternalLoginPost**](docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md#accountmanagelinkexternalloginpost) | **POST** /Account/Manage/LinkExternalLogin | 
 *NovaLabVersion1000CultureneutralPublicKeyTokennullApi* | [**AccountPerformExternalLoginPost**](docs/NovaLabVersion1000CultureneutralPublicKeyTokennullApi.md#accountperformexternalloginpost) | **POST** /Account/PerformExternalLogin | 
+*TwitchFollowerGoalApi* | [**GetFollowerGoals**](docs/TwitchFollowerGoalApi.md#getfollowergoals) | **GET** /api/twitch/followers/follower-goal | 
+*TwitchFollowerGoalApi* | [**PostFollowerGoal**](docs/TwitchFollowerGoalApi.md#postfollowergoal) | **POST** /api/twitch/followers/follower-goal | 
 *TwitchManagedRewardApi* | [**GetManagedRewards**](docs/TwitchManagedRewardApi.md#getmanagedrewards) | **GET** /api/twitch/managed-rewards | 
 *TwitchManagedRewardApi* | [**PostManagedReward**](docs/TwitchManagedRewardApi.md#postmanagedreward) | **POST** /api/twitch/managed-rewards | 
 *TwitchManagedRewardApi* | [**PostNewLastCleared**](docs/TwitchManagedRewardApi.md#postnewlastcleared) | **POST** /api/twitch/managed-rewards/clear | 
 *TwitchManagedRewardRedemptionApi* | [**GetRedemptions**](docs/TwitchManagedRewardRedemptionApi.md#getredemptions) | **GET** /api/twitch/managed-rewards-redemptions | 
 *TwitchManagedRewardRedemptionApi* | [**PostRedemption**](docs/TwitchManagedRewardRedemptionApi.md#postredemption) | **POST** /api/twitch/managed-rewards-redemptions | 
+*TwitchNewFollowerApi* | [**GetNewFollowers**](docs/TwitchNewFollowerApi.md#getnewfollowers) | **GET** /api/twitch/followers/new-follower | 
+*TwitchNewFollowerApi* | [**PostNewFollower**](docs/TwitchNewFollowerApi.md#postnewfollower) | **POST** /api/twitch/followers/new-follower | 
 
 
 <a name="documentation-for-models"></a>
@@ -129,14 +133,19 @@ Class | Method | HTTP request | Description
 
  - [Model.ApiResult](docs/ApiResult.md)
  - [Model.CreateCustomRewardsRequest](docs/CreateCustomRewardsRequest.md)
+ - [Model.FollowerGoalDto](docs/FollowerGoalDto.md)
+ - [Model.FollowerGoalDtoApiResult](docs/FollowerGoalDtoApiResult.md)
  - [Model.HttpStatusCode](docs/HttpStatusCode.md)
- - [Model.NovaLabUser](docs/NovaLabUser.md)
+ - [Model.NewFollowerDto](docs/NewFollowerDto.md)
+ - [Model.NewFollowerDtoApiResult](docs/NewFollowerDtoApiResult.md)
+ - [Model.PostFollowerGoalDto](docs/PostFollowerGoalDto.md)
  - [Model.PostManagedRewardDto](docs/PostManagedRewardDto.md)
- - [Model.TwitchManagedReward](docs/TwitchManagedReward.md)
- - [Model.TwitchManagedRewardApiResult](docs/TwitchManagedRewardApiResult.md)
- - [Model.TwitchManagedRewardRedemption](docs/TwitchManagedRewardRedemption.md)
- - [Model.TwitchManagedRewardRedemptionApiResult](docs/TwitchManagedRewardRedemptionApiResult.md)
+ - [Model.PostNewFollowerDto](docs/PostNewFollowerDto.md)
+ - [Model.PostTwitchManagedRewardRedemptionDto](docs/PostTwitchManagedRewardRedemptionDto.md)
+ - [Model.TwitchManagedRewardDto](docs/TwitchManagedRewardDto.md)
+ - [Model.TwitchManagedRewardDtoApiResult](docs/TwitchManagedRewardDtoApiResult.md)
  - [Model.TwitchManagedRewardRedemptionDto](docs/TwitchManagedRewardRedemptionDto.md)
+ - [Model.TwitchManagedRewardRedemptionDtoApiResult](docs/TwitchManagedRewardRedemptionDtoApiResult.md)
 
 
 <a name="documentation-for-authorization"></a>

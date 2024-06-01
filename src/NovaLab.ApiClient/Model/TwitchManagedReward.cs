@@ -8,248 +8,233 @@
  */
 
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
-namespace NovaLab.ApiClient.Model
-{
+namespace NovaLab.ApiClient.Model;
+
+/// <summary>
+///     TwitchManagedReward
+/// </summary>
+[DataContract(Name = "TwitchManagedReward")]
+public class TwitchManagedReward : IEquatable<TwitchManagedReward>, IValidatableObject {
     /// <summary>
-    /// TwitchManagedReward
+    ///     Initializes a new instance of the <see cref="TwitchManagedReward" /> class.
     /// </summary>
-    [DataContract(Name = "TwitchManagedReward")]
-    public partial class TwitchManagedReward : IEquatable<TwitchManagedReward>, IValidatableObject
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedReward" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected TwitchManagedReward() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedReward" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="user">user.</param>
-        /// <param name="rewardId">rewardId.</param>
-        /// <param name="outputTemplatePerRedemption">outputTemplatePerRedemption (required).</param>
-        /// <param name="outputTemplatePerReward">outputTemplatePerReward (required).</param>
-        /// <param name="lastCleared">lastCleared.</param>
-        public TwitchManagedReward(Guid id = default(Guid), NovaLabUser user = default(NovaLabUser), string rewardId = default(string), string outputTemplatePerRedemption = default(string), string outputTemplatePerReward = default(string), DateTime lastCleared = default(DateTime))
-        {
-            // to ensure "outputTemplatePerRedemption" is required (not null)
-            if (outputTemplatePerRedemption == null)
-            {
-                throw new ArgumentNullException("outputTemplatePerRedemption is a required property for TwitchManagedReward and cannot be null");
-            }
-            this.OutputTemplatePerRedemption = outputTemplatePerRedemption;
-            // to ensure "outputTemplatePerReward" is required (not null)
-            if (outputTemplatePerReward == null)
-            {
-                throw new ArgumentNullException("outputTemplatePerReward is a required property for TwitchManagedReward and cannot be null");
-            }
-            this.OutputTemplatePerReward = outputTemplatePerReward;
-            this.Id = id;
-            this.User = user;
-            this.RewardId = rewardId;
-            this.LastCleared = lastCleared;
+    [JsonConstructorAttribute]
+    protected TwitchManagedReward() {}
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="TwitchManagedReward" /> class.
+    /// </summary>
+    /// <param name="id">id.</param>
+    /// <param name="user">user.</param>
+    /// <param name="rewardId">rewardId.</param>
+    /// <param name="outputTemplatePerRedemption">outputTemplatePerRedemption (required).</param>
+    /// <param name="outputTemplatePerReward">outputTemplatePerReward (required).</param>
+    /// <param name="lastCleared">lastCleared.</param>
+    /// <param name="isValidOnTwitch">isValidOnTwitch.</param>
+    public TwitchManagedReward(Guid id = default, NovaLabUser user = default, string rewardId = default, string outputTemplatePerRedemption = default, string outputTemplatePerReward = default, DateTime lastCleared = default, bool isValidOnTwitch = default) {
+        // to ensure "outputTemplatePerRedemption" is required (not null)
+        if (outputTemplatePerRedemption == null) {
+            throw new ArgumentNullException("outputTemplatePerRedemption is a required property for TwitchManagedReward and cannot be null");
         }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets User
-        /// </summary>
-        [DataMember(Name = "user", EmitDefaultValue = false)]
-        public NovaLabUser User { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RewardId
-        /// </summary>
-        [DataMember(Name = "rewardId", EmitDefaultValue = true)]
-        public string RewardId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OutputTemplatePerRedemption
-        /// </summary>
-        [DataMember(Name = "outputTemplatePerRedemption", IsRequired = true, EmitDefaultValue = true)]
-        public string OutputTemplatePerRedemption { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OutputTemplatePerReward
-        /// </summary>
-        [DataMember(Name = "outputTemplatePerReward", IsRequired = true, EmitDefaultValue = true)]
-        public string OutputTemplatePerReward { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastCleared
-        /// </summary>
-        [DataMember(Name = "lastCleared", EmitDefaultValue = false)]
-        public DateTime LastCleared { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class TwitchManagedReward {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  User: ").Append(User).Append("\n");
-            sb.Append("  RewardId: ").Append(RewardId).Append("\n");
-            sb.Append("  OutputTemplatePerRedemption: ").Append(OutputTemplatePerRedemption).Append("\n");
-            sb.Append("  OutputTemplatePerReward: ").Append(OutputTemplatePerReward).Append("\n");
-            sb.Append("  LastCleared: ").Append(LastCleared).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+        OutputTemplatePerRedemption = outputTemplatePerRedemption;
+        // to ensure "outputTemplatePerReward" is required (not null)
+        if (outputTemplatePerReward == null) {
+            throw new ArgumentNullException("outputTemplatePerReward is a required property for TwitchManagedReward and cannot be null");
         }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// Returns true if objects are equal
-        /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
-        {
-            return this.Equals(input as TwitchManagedReward);
-        }
-
-        /// <summary>
-        /// Returns true if TwitchManagedReward instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TwitchManagedReward to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TwitchManagedReward input)
-        {
-            if (input == null)
-            {
-                return false;
-            }
-            return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.User == input.User ||
-                    (this.User != null &&
-                    this.User.Equals(input.User))
-                ) && 
-                (
-                    this.RewardId == input.RewardId ||
-                    (this.RewardId != null &&
-                    this.RewardId.Equals(input.RewardId))
-                ) && 
-                (
-                    this.OutputTemplatePerRedemption == input.OutputTemplatePerRedemption ||
-                    (this.OutputTemplatePerRedemption != null &&
-                    this.OutputTemplatePerRedemption.Equals(input.OutputTemplatePerRedemption))
-                ) && 
-                (
-                    this.OutputTemplatePerReward == input.OutputTemplatePerReward ||
-                    (this.OutputTemplatePerReward != null &&
-                    this.OutputTemplatePerReward.Equals(input.OutputTemplatePerReward))
-                ) && 
-                (
-                    this.LastCleared == input.LastCleared ||
-                    (this.LastCleared != null &&
-                    this.LastCleared.Equals(input.LastCleared))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Id != null)
-                {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
-                if (this.User != null)
-                {
-                    hashCode = (hashCode * 59) + this.User.GetHashCode();
-                }
-                if (this.RewardId != null)
-                {
-                    hashCode = (hashCode * 59) + this.RewardId.GetHashCode();
-                }
-                if (this.OutputTemplatePerRedemption != null)
-                {
-                    hashCode = (hashCode * 59) + this.OutputTemplatePerRedemption.GetHashCode();
-                }
-                if (this.OutputTemplatePerReward != null)
-                {
-                    hashCode = (hashCode * 59) + this.OutputTemplatePerReward.GetHashCode();
-                }
-                if (this.LastCleared != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastCleared.GetHashCode();
-                }
-                return hashCode;
-            }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            // RewardId (string) maxLength
-            if (this.RewardId != null && this.RewardId.Length > 128)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RewardId, length must be less than 128.", new [] { "RewardId" });
-            }
-
-            // OutputTemplatePerRedemption (string) maxLength
-            if (this.OutputTemplatePerRedemption != null && this.OutputTemplatePerRedemption.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OutputTemplatePerRedemption, length must be less than 255.", new [] { "OutputTemplatePerRedemption" });
-            }
-
-            // OutputTemplatePerRedemption (string) minLength
-            if (this.OutputTemplatePerRedemption != null && this.OutputTemplatePerRedemption.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OutputTemplatePerRedemption, length must be greater than 1.", new [] { "OutputTemplatePerRedemption" });
-            }
-
-            // OutputTemplatePerReward (string) maxLength
-            if (this.OutputTemplatePerReward != null && this.OutputTemplatePerReward.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OutputTemplatePerReward, length must be less than 255.", new [] { "OutputTemplatePerReward" });
-            }
-
-            // OutputTemplatePerReward (string) minLength
-            if (this.OutputTemplatePerReward != null && this.OutputTemplatePerReward.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OutputTemplatePerReward, length must be greater than 1.", new [] { "OutputTemplatePerReward" });
-            }
-
-            yield break;
-        }
+        OutputTemplatePerReward = outputTemplatePerReward;
+        Id = id;
+        User = user;
+        RewardId = rewardId;
+        LastCleared = lastCleared;
+        IsValidOnTwitch = isValidOnTwitch;
     }
 
+    /// <summary>
+    ///     Gets or Sets Id
+    /// </summary>
+    [DataMember(Name = "id", EmitDefaultValue = false)]
+    public Guid Id { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets User
+    /// </summary>
+    [DataMember(Name = "user", EmitDefaultValue = false)]
+    public NovaLabUser User { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets RewardId
+    /// </summary>
+    [DataMember(Name = "rewardId", EmitDefaultValue = true)]
+    public string RewardId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OutputTemplatePerRedemption
+    /// </summary>
+    [DataMember(Name = "outputTemplatePerRedemption", IsRequired = true, EmitDefaultValue = true)]
+    public string OutputTemplatePerRedemption { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OutputTemplatePerReward
+    /// </summary>
+    [DataMember(Name = "outputTemplatePerReward", IsRequired = true, EmitDefaultValue = true)]
+    public string OutputTemplatePerReward { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LastCleared
+    /// </summary>
+    [DataMember(Name = "lastCleared", EmitDefaultValue = false)]
+    public DateTime LastCleared { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsValidOnTwitch
+    /// </summary>
+    [DataMember(Name = "isValidOnTwitch", EmitDefaultValue = true)]
+    public bool IsValidOnTwitch { get; set; }
+
+    /// <summary>
+    ///     Returns true if TwitchManagedReward instances are equal
+    /// </summary>
+    /// <param name="input">Instance of TwitchManagedReward to be compared</param>
+    /// <returns>Boolean</returns>
+    public bool Equals(TwitchManagedReward input) {
+        if (input == null) {
+            return false;
+        }
+        return
+            (
+                Id == input.Id ||
+                Id != null &&
+                Id.Equals(input.Id)
+            ) &&
+            (
+                User == input.User ||
+                User != null &&
+                User.Equals(input.User)
+            ) &&
+            (
+                RewardId == input.RewardId ||
+                RewardId != null &&
+                RewardId.Equals(input.RewardId)
+            ) &&
+            (
+                OutputTemplatePerRedemption == input.OutputTemplatePerRedemption ||
+                OutputTemplatePerRedemption != null &&
+                OutputTemplatePerRedemption.Equals(input.OutputTemplatePerRedemption)
+            ) &&
+            (
+                OutputTemplatePerReward == input.OutputTemplatePerReward ||
+                OutputTemplatePerReward != null &&
+                OutputTemplatePerReward.Equals(input.OutputTemplatePerReward)
+            ) &&
+            (
+                LastCleared == input.LastCleared ||
+                LastCleared != null &&
+                LastCleared.Equals(input.LastCleared)
+            ) &&
+            (
+                IsValidOnTwitch == input.IsValidOnTwitch ||
+                IsValidOnTwitch.Equals(input.IsValidOnTwitch)
+            );
+    }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {
+        // RewardId (string) maxLength
+        if (RewardId != null && RewardId.Length > 128) {
+            yield return new ValidationResult("Invalid value for RewardId, length must be less than 128.", new[] { "RewardId" });
+        }
+
+        // OutputTemplatePerRedemption (string) maxLength
+        if (OutputTemplatePerRedemption != null && OutputTemplatePerRedemption.Length > 255) {
+            yield return new ValidationResult("Invalid value for OutputTemplatePerRedemption, length must be less than 255.", new[] { "OutputTemplatePerRedemption" });
+        }
+
+        // OutputTemplatePerRedemption (string) minLength
+        if (OutputTemplatePerRedemption != null && OutputTemplatePerRedemption.Length < 1) {
+            yield return new ValidationResult("Invalid value for OutputTemplatePerRedemption, length must be greater than 1.", new[] { "OutputTemplatePerRedemption" });
+        }
+
+        // OutputTemplatePerReward (string) maxLength
+        if (OutputTemplatePerReward != null && OutputTemplatePerReward.Length > 255) {
+            yield return new ValidationResult("Invalid value for OutputTemplatePerReward, length must be less than 255.", new[] { "OutputTemplatePerReward" });
+        }
+
+        // OutputTemplatePerReward (string) minLength
+        if (OutputTemplatePerReward != null && OutputTemplatePerReward.Length < 1) {
+            yield return new ValidationResult("Invalid value for OutputTemplatePerReward, length must be greater than 1.", new[] { "OutputTemplatePerReward" });
+        }
+
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString() {
+        var sb = new StringBuilder();
+        sb.Append("class TwitchManagedReward {\n");
+        sb.Append("  Id: ").Append(Id).Append("\n");
+        sb.Append("  User: ").Append(User).Append("\n");
+        sb.Append("  RewardId: ").Append(RewardId).Append("\n");
+        sb.Append("  OutputTemplatePerRedemption: ").Append(OutputTemplatePerRedemption).Append("\n");
+        sb.Append("  OutputTemplatePerReward: ").Append(OutputTemplatePerReward).Append("\n");
+        sb.Append("  LastCleared: ").Append(LastCleared).Append("\n");
+        sb.Append("  IsValidOnTwitch: ").Append(IsValidOnTwitch).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    /// <summary>
+    ///     Returns true if objects are equal
+    /// </summary>
+    /// <param name="input">Object to be compared</param>
+    /// <returns>Boolean</returns>
+    public override bool Equals(object input) => Equals(input as TwitchManagedReward);
+
+    /// <summary>
+    ///     Gets the hash code
+    /// </summary>
+    /// <returns>Hash code</returns>
+    public override int GetHashCode() {
+        unchecked// Overflow is fine, just wrap
+        {
+            int hashCode = 41;
+            if (Id != null) {
+                hashCode = hashCode * 59 + Id.GetHashCode();
+            }
+            if (User != null) {
+                hashCode = hashCode * 59 + User.GetHashCode();
+            }
+            if (RewardId != null) {
+                hashCode = hashCode * 59 + RewardId.GetHashCode();
+            }
+            if (OutputTemplatePerRedemption != null) {
+                hashCode = hashCode * 59 + OutputTemplatePerRedemption.GetHashCode();
+            }
+            if (OutputTemplatePerReward != null) {
+                hashCode = hashCode * 59 + OutputTemplatePerReward.GetHashCode();
+            }
+            if (LastCleared != null) {
+                hashCode = hashCode * 59 + LastCleared.GetHashCode();
+            }
+            hashCode = hashCode * 59 + IsValidOnTwitch.GetHashCode();
+            return hashCode;
+        }
+    }
 }

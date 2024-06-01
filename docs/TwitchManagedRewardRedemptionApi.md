@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 
 <a name="getredemptions"></a>
 # **GetRedemptions**
-> TwitchManagedRewardRedemptionApiResult GetRedemptions (string? userId = null, Guid? rewardId = null, DateTime? after = null, int? limit = null)
+> TwitchManagedRewardRedemptionDtoApiResult GetRedemptions (string? userId = null, Guid? rewardId = null, DateTime? after = null, int? limit = null)
 
 
 
@@ -37,7 +37,7 @@ namespace Example
 
             try
             {
-                TwitchManagedRewardRedemptionApiResult result = apiInstance.GetRedemptions(userId, rewardId, after, limit);
+                TwitchManagedRewardRedemptionDtoApiResult result = apiInstance.GetRedemptions(userId, rewardId, after, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -57,7 +57,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<TwitchManagedRewardRedemptionApiResult> response = apiInstance.GetRedemptionsWithHttpInfo(userId, rewardId, after, limit);
+    ApiResponse<TwitchManagedRewardRedemptionDtoApiResult> response = apiInstance.GetRedemptionsWithHttpInfo(userId, rewardId, after, limit);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -81,7 +81,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**TwitchManagedRewardRedemptionApiResult**](TwitchManagedRewardRedemptionApiResult.md)
+[**TwitchManagedRewardRedemptionDtoApiResult**](TwitchManagedRewardRedemptionDtoApiResult.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ No authorization required
 
 <a name="postredemption"></a>
 # **PostRedemption**
-> ApiResult PostRedemption (TwitchManagedRewardRedemptionDto? twitchManagedRewardRedemptionDto = null)
+> ApiResult PostRedemption (PostTwitchManagedRewardRedemptionDto? postTwitchManagedRewardRedemptionDto = null)
 
 
 
@@ -124,11 +124,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new TwitchManagedRewardRedemptionApi(config);
-            var twitchManagedRewardRedemptionDto = new TwitchManagedRewardRedemptionDto?(); // TwitchManagedRewardRedemptionDto? |  (optional) 
+            var postTwitchManagedRewardRedemptionDto = new PostTwitchManagedRewardRedemptionDto?(); // PostTwitchManagedRewardRedemptionDto? |  (optional) 
 
             try
             {
-                ApiResult result = apiInstance.PostRedemption(twitchManagedRewardRedemptionDto);
+                ApiResult result = apiInstance.PostRedemption(postTwitchManagedRewardRedemptionDto);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -148,7 +148,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<ApiResult> response = apiInstance.PostRedemptionWithHttpInfo(twitchManagedRewardRedemptionDto);
+    ApiResponse<ApiResult> response = apiInstance.PostRedemptionWithHttpInfo(postTwitchManagedRewardRedemptionDto);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -165,7 +165,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **twitchManagedRewardRedemptionDto** | [**TwitchManagedRewardRedemptionDto?**](TwitchManagedRewardRedemptionDto?.md) |  | [optional]  |
+| **postTwitchManagedRewardRedemptionDto** | [**PostTwitchManagedRewardRedemptionDto?**](PostTwitchManagedRewardRedemptionDto?.md) |  | [optional]  |
 
 ### Return type
 

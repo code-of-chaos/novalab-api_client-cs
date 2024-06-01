@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**UserId** | **string** |  | [optional] 
 **TwitchApiRequest** | [**CreateCustomRewardsRequest**](CreateCustomRewardsRequest.md) |  | [optional] 
 **OutputTemplatePerReward** | **string** |  | [optional] 
 **OutputTemplatePerRedemption** | **string** |  | [optional] 

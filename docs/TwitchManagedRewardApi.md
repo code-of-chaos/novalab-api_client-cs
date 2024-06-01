@@ -10,7 +10,7 @@ All URIs are relative to *http://localhost*
 
 <a name="getmanagedrewards"></a>
 # **GetManagedRewards**
-> TwitchManagedRewardApiResult GetManagedRewards (string? userId = null, int? limit = null)
+> TwitchManagedRewardDtoApiResult GetManagedRewards (string? userId = null, int? limit = null, bool? includeInvalid = null)
 
 
 
@@ -33,10 +33,11 @@ namespace Example
             var apiInstance = new TwitchManagedRewardApi(config);
             var userId = "userId_example";  // string? |  (optional) 
             var limit = 56;  // int? |  (optional) 
+            var includeInvalid = true;  // bool? |  (optional) 
 
             try
             {
-                TwitchManagedRewardApiResult result = apiInstance.GetManagedRewards(userId, limit);
+                TwitchManagedRewardDtoApiResult result = apiInstance.GetManagedRewards(userId, limit, includeInvalid);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -56,7 +57,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<TwitchManagedRewardApiResult> response = apiInstance.GetManagedRewardsWithHttpInfo(userId, limit);
+    ApiResponse<TwitchManagedRewardDtoApiResult> response = apiInstance.GetManagedRewardsWithHttpInfo(userId, limit, includeInvalid);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -75,10 +76,11 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **userId** | **string?** |  | [optional]  |
 | **limit** | **int?** |  | [optional]  |
+| **includeInvalid** | **bool?** |  | [optional]  |
 
 ### Return type
 
-[**TwitchManagedRewardApiResult**](TwitchManagedRewardApiResult.md)
+[**TwitchManagedRewardDtoApiResult**](TwitchManagedRewardDtoApiResult.md)
 
 ### Authorization
 
@@ -100,7 +102,7 @@ No authorization required
 
 <a name="postmanagedreward"></a>
 # **PostManagedReward**
-> ApiResult PostManagedReward (string? userId = null, PostManagedRewardDto? postManagedRewardDto = null)
+> TwitchManagedRewardDtoApiResult PostManagedReward (PostManagedRewardDto? postManagedRewardDto = null)
 
 
 
@@ -121,12 +123,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new TwitchManagedRewardApi(config);
-            var userId = "userId_example";  // string? |  (optional) 
             var postManagedRewardDto = new PostManagedRewardDto?(); // PostManagedRewardDto? |  (optional) 
 
             try
             {
-                ApiResult result = apiInstance.PostManagedReward(userId, postManagedRewardDto);
+                TwitchManagedRewardDtoApiResult result = apiInstance.PostManagedReward(postManagedRewardDto);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -146,7 +147,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<ApiResult> response = apiInstance.PostManagedRewardWithHttpInfo(userId, postManagedRewardDto);
+    ApiResponse<TwitchManagedRewardDtoApiResult> response = apiInstance.PostManagedRewardWithHttpInfo(postManagedRewardDto);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -163,12 +164,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **string?** |  | [optional]  |
 | **postManagedRewardDto** | [**PostManagedRewardDto?**](PostManagedRewardDto?.md) |  | [optional]  |
 
 ### Return type
 
-[**ApiResult**](ApiResult.md)
+[**TwitchManagedRewardDtoApiResult**](TwitchManagedRewardDtoApiResult.md)
 
 ### Authorization
 

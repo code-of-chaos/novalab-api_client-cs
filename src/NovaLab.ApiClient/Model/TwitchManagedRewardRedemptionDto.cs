@@ -8,148 +8,165 @@
  */
 
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
 
-namespace NovaLab.ApiClient.Model
-{
+namespace NovaLab.ApiClient.Model;
+
+/// <summary>
+///     TwitchManagedRewardRedemptionDto
+/// </summary>
+[DataContract(Name = "TwitchManagedRewardRedemptionDto")]
+public class TwitchManagedRewardRedemptionDto : IEquatable<TwitchManagedRewardRedemptionDto>, IValidatableObject {
     /// <summary>
-    /// TwitchManagedRewardRedemptionDto
+    ///     Initializes a new instance of the <see cref="TwitchManagedRewardRedemptionDto" /> class.
     /// </summary>
-    [DataContract(Name = "TwitchManagedRewardRedemptionDto")]
-    public partial class TwitchManagedRewardRedemptionDto : IEquatable<TwitchManagedRewardRedemptionDto>, IValidatableObject
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TwitchManagedRewardRedemptionDto" /> class.
-        /// </summary>
-        /// <param name="rewardId">rewardId.</param>
-        /// <param name="username">username.</param>
-        /// <param name="message">message.</param>
-        public TwitchManagedRewardRedemptionDto(string rewardId = default(string), string username = default(string), string message = default(string))
-        {
-            this.RewardId = rewardId;
-            this.Username = username;
-            this.Message = message;
-        }
-
-        /// <summary>
-        /// Gets or Sets RewardId
-        /// </summary>
-        [DataMember(Name = "rewardId", EmitDefaultValue = true)]
-        public string RewardId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = true)]
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Message
-        /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = true)]
-        public string Message { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class TwitchManagedRewardRedemptionDto {\n");
-            sb.Append("  RewardId: ").Append(RewardId).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// Returns true if objects are equal
-        /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
-        {
-            return this.Equals(input as TwitchManagedRewardRedemptionDto);
-        }
-
-        /// <summary>
-        /// Returns true if TwitchManagedRewardRedemptionDto instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TwitchManagedRewardRedemptionDto to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TwitchManagedRewardRedemptionDto input)
-        {
-            if (input == null)
-            {
-                return false;
-            }
-            return 
-                (
-                    this.RewardId == input.RewardId ||
-                    (this.RewardId != null &&
-                    this.RewardId.Equals(input.RewardId))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
-                ) && 
-                (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.RewardId != null)
-                {
-                    hashCode = (hashCode * 59) + this.RewardId.GetHashCode();
-                }
-                if (this.Username != null)
-                {
-                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
-                }
-                if (this.Message != null)
-                {
-                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
-                }
-                return hashCode;
-            }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+    /// <param name="managedRewardRedemptionId">managedRewardRedemptionId.</param>
+    /// <param name="managedRewardId">managedRewardId.</param>
+    /// <param name="timeStamp">timeStamp.</param>
+    /// <param name="userName">userName.</param>
+    /// <param name="message">message.</param>
+    public TwitchManagedRewardRedemptionDto(Guid managedRewardRedemptionId = default, Guid managedRewardId = default, DateTime timeStamp = default, string userName = default, string message = default) {
+        ManagedRewardRedemptionId = managedRewardRedemptionId;
+        ManagedRewardId = managedRewardId;
+        TimeStamp = timeStamp;
+        UserName = userName;
+        Message = message;
     }
 
+    /// <summary>
+    ///     Gets or Sets ManagedRewardRedemptionId
+    /// </summary>
+    [DataMember(Name = "managedRewardRedemptionId", EmitDefaultValue = false)]
+    public Guid ManagedRewardRedemptionId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ManagedRewardId
+    /// </summary>
+    [DataMember(Name = "managedRewardId", EmitDefaultValue = false)]
+    public Guid ManagedRewardId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TimeStamp
+    /// </summary>
+    [DataMember(Name = "timeStamp", EmitDefaultValue = false)]
+    public DateTime TimeStamp { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserName
+    /// </summary>
+    [DataMember(Name = "userName", EmitDefaultValue = true)]
+    public string UserName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Message
+    /// </summary>
+    [DataMember(Name = "message", EmitDefaultValue = true)]
+    public string Message { get; set; }
+
+    /// <summary>
+    ///     Returns true if TwitchManagedRewardRedemptionDto instances are equal
+    /// </summary>
+    /// <param name="input">Instance of TwitchManagedRewardRedemptionDto to be compared</param>
+    /// <returns>Boolean</returns>
+    public bool Equals(TwitchManagedRewardRedemptionDto input) {
+        if (input == null) {
+            return false;
+        }
+        return
+            (
+                ManagedRewardRedemptionId == input.ManagedRewardRedemptionId ||
+                ManagedRewardRedemptionId != null &&
+                ManagedRewardRedemptionId.Equals(input.ManagedRewardRedemptionId)
+            ) &&
+            (
+                ManagedRewardId == input.ManagedRewardId ||
+                ManagedRewardId != null &&
+                ManagedRewardId.Equals(input.ManagedRewardId)
+            ) &&
+            (
+                TimeStamp == input.TimeStamp ||
+                TimeStamp != null &&
+                TimeStamp.Equals(input.TimeStamp)
+            ) &&
+            (
+                UserName == input.UserName ||
+                UserName != null &&
+                UserName.Equals(input.UserName)
+            ) &&
+            (
+                Message == input.Message ||
+                Message != null &&
+                Message.Equals(input.Message)
+            );
+    }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString() {
+        var sb = new StringBuilder();
+        sb.Append("class TwitchManagedRewardRedemptionDto {\n");
+        sb.Append("  ManagedRewardRedemptionId: ").Append(ManagedRewardRedemptionId).Append("\n");
+        sb.Append("  ManagedRewardId: ").Append(ManagedRewardId).Append("\n");
+        sb.Append("  TimeStamp: ").Append(TimeStamp).Append("\n");
+        sb.Append("  UserName: ").Append(UserName).Append("\n");
+        sb.Append("  Message: ").Append(Message).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    /// <summary>
+    ///     Returns true if objects are equal
+    /// </summary>
+    /// <param name="input">Object to be compared</param>
+    /// <returns>Boolean</returns>
+    public override bool Equals(object input) => Equals(input as TwitchManagedRewardRedemptionDto);
+
+    /// <summary>
+    ///     Gets the hash code
+    /// </summary>
+    /// <returns>Hash code</returns>
+    public override int GetHashCode() {
+        unchecked// Overflow is fine, just wrap
+        {
+            int hashCode = 41;
+            if (ManagedRewardRedemptionId != null) {
+                hashCode = hashCode * 59 + ManagedRewardRedemptionId.GetHashCode();
+            }
+            if (ManagedRewardId != null) {
+                hashCode = hashCode * 59 + ManagedRewardId.GetHashCode();
+            }
+            if (TimeStamp != null) {
+                hashCode = hashCode * 59 + TimeStamp.GetHashCode();
+            }
+            if (UserName != null) {
+                hashCode = hashCode * 59 + UserName.GetHashCode();
+            }
+            if (Message != null) {
+                hashCode = hashCode * 59 + Message.GetHashCode();
+            }
+            return hashCode;
+        }
+    }
 }

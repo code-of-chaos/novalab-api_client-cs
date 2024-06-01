@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **OutputTemplatePerRedemption** | **string** |  | 
 **OutputTemplatePerReward** | **string** |  | 
 **LastCleared** | **DateTime** |  | [optional] 
+**IsValidOnTwitch** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
