@@ -334,7 +334,6 @@ namespace NovaLab.ApiClient.Model
         /// Enum NUMBER_511 for value: 511
         /// </summary>
         NUMBER_511 = 511
-
     }
 
 }

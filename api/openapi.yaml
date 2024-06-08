@@ -1,0 +1,277 @@
+openapi: 3.0.1
+info:
+  description: An ASP.NET Core Web API for managing your streams
+  title: NovaLab API
+  version: v1
+servers:
+- url: /
+paths:
+  /api/twitch/tracked-stream-subject:
+    get:
+      operationId: GetTrackedStreamSubjects
+      parameters:
+      - explode: true
+        in: query
+        name: user-id
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+          description: OK
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApiResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApiResult'
+          description: Internal Server Error
+      tags:
+      - TrackedStreamSubject
+    post:
+      operationId: PostTrackedStreamSubject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrackedStreamSubjectDtoPost'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TrackedStreamSubjectDtoPost'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TrackedStreamSubjectDtoPost'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApiResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApiResult'
+          description: Bad Request
+      tags:
+      - TrackedStreamSubject
+components:
+  schemas:
+    ApiResult:
+      additionalProperties: false
+      example:
+        data:
+        - ""
+        - ""
+        message: message
+        status: 6
+      properties:
+        status:
+          $ref: '#/components/schemas/HttpStatusCode'
+        message:
+          nullable: true
+          type: string
+        data:
+          items: {}
+          nullable: true
+          type: array
+      type: object
+    HttpStatusCode:
+      enum:
+      - 100
+      - 101
+      - 102
+      - 103
+      - 200
+      - 201
+      - 202
+      - 203
+      - 204
+      - 205
+      - 206
+      - 207
+      - 208
+      - 226
+      - 300
+      - 301
+      - 302
+      - 303
+      - 304
+      - 305
+      - 306
+      - 307
+      - 308
+      - 400
+      - 401
+      - 402
+      - 403
+      - 404
+      - 405
+      - 406
+      - 407
+      - 408
+      - 409
+      - 410
+      - 411
+      - 412
+      - 413
+      - 414
+      - 415
+      - 416
+      - 417
+      - 421
+      - 422
+      - 423
+      - 424
+      - 426
+      - 428
+      - 429
+      - 431
+      - 451
+      - 500
+      - 501
+      - 502
+      - 503
+      - 504
+      - 505
+      - 506
+      - 507
+      - 508
+      - 510
+      - 511
+      format: int32
+      type: integer
+    TrackedStreamSubjectDto:
+      additionalProperties: false
+      example:
+        novaLabUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        trackedStreamSubjectComponentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        twitchTitle: twitchTitle
+        twitchBroadcastLanguage: twitchBroadcastLanguage
+        twitchTags:
+        - twitchTags
+        - twitchTags
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        twitchGameId: twitchGameId
+      properties:
+        id:
+          format: uuid
+          type: string
+        novaLabUserId:
+          format: uuid
+          type: string
+        twitchGameId:
+          nullable: true
+          type: string
+        twitchBroadcastLanguage:
+          nullable: true
+          type: string
+        twitchTitle:
+          nullable: true
+          type: string
+        twitchTags:
+          items:
+            type: string
+          nullable: true
+          type: array
+        trackedStreamSubjectComponentId:
+          format: uuid
+          nullable: true
+          type: string
+      type: object
+    TrackedStreamSubjectDtoIApiResult:
+      additionalProperties: false
+      example:
+        data:
+        - novaLabUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          trackedStreamSubjectComponentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          twitchTitle: twitchTitle
+          twitchBroadcastLanguage: twitchBroadcastLanguage
+          twitchTags:
+          - twitchTags
+          - twitchTags
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          twitchGameId: twitchGameId
+        - novaLabUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          trackedStreamSubjectComponentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          twitchTitle: twitchTitle
+          twitchBroadcastLanguage: twitchBroadcastLanguage
+          twitchTags:
+          - twitchTags
+          - twitchTags
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          twitchGameId: twitchGameId
+        message: message
+        status: 0
+      properties:
+        status:
+          $ref: '#/components/schemas/HttpStatusCode'
+        message:
+          nullable: true
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/TrackedStreamSubjectDto'
+          nullable: true
+          type: array
+      type: object
+    TrackedStreamSubjectDtoPost:
+      additionalProperties: false
+      example:
+        novaLabUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        twitchGameTitleName: twitchGameTitleName
+        twitchTitle: twitchTitle
+        twitchBroadcastLanguage: twitchBroadcastLanguage
+        twitchTags:
+        - twitchTags
+        - twitchTags
+      properties:
+        novaLabUserId:
+          format: uuid
+          type: string
+        twitchTitle:
+          nullable: true
+          type: string
+        twitchBroadcastLanguage:
+          nullable: true
+          type: string
+        twitchTags:
+          items:
+            type: string
+          nullable: true
+          type: array
+        twitchGameTitleName:
+          nullable: true
+          type: string
+      type: object
+
