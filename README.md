@@ -87,16 +87,16 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
             var apiInstance = new TrackedStreamSubjectApi(config);
-            var userId = "userId_example";  // Guid? |  (optional) 
+            var subjectId = "subjectId_example";  // Guid? |  (optional) 
 
             try
             {
-                TrackedStreamSubjectDtoIApiResult result = apiInstance.GetTrackedStreamSubjects(userId);
+                BooleanIApiResult result = apiInstance.DeleteTrackedStreamSubject(subjectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling TrackedStreamSubjectApi.GetTrackedStreamSubjects: " + e.Message );
+                Debug.Print("Exception when calling TrackedStreamSubjectApi.DeleteTrackedStreamSubject: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -113,14 +113,17 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*TrackedStreamSubjectApi* | [**DeleteTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#deletetrackedstreamsubject) | **DELETE** /api/twitch/tracked-stream-subject | 
 *TrackedStreamSubjectApi* | [**GetTrackedStreamSubjects**](docs/TrackedStreamSubjectApi.md#gettrackedstreamsubjects) | **GET** /api/twitch/tracked-stream-subject | 
 *TrackedStreamSubjectApi* | [**PostTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#posttrackedstreamsubject) | **POST** /api/twitch/tracked-stream-subject | 
+*TrackedStreamSubjectApi* | [**SelectTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#selecttrackedstreamsubject) | **POST** /api/twitch/tracked-stream-subject/select | 
 
 
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
  - [Model.ApiResult](docs/ApiResult.md)
+ - [Model.BooleanIApiResult](docs/BooleanIApiResult.md)
  - [Model.HttpStatusCode](docs/HttpStatusCode.md)
  - [Model.TrackedStreamSubjectDto](docs/TrackedStreamSubjectDto.md)
  - [Model.TrackedStreamSubjectDtoIApiResult](docs/TrackedStreamSubjectDtoIApiResult.md)

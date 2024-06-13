@@ -4,6 +4,7 @@ README.md
 api/openapi.yaml
 appveyor.yml
 docs/ApiResult.md
+docs/BooleanIApiResult.md
 docs/HttpStatusCode.md
 docs/TrackedStreamSubjectApi.md
 docs/TrackedStreamSubjectDto.md
@@ -30,6 +31,7 @@ src/NovaLab.ApiClient/Client/RequestOptions.cs
 src/NovaLab.ApiClient/Client/RetryConfiguration.cs
 src/NovaLab.ApiClient/Model/AbstractOpenAPISchema.cs
 src/NovaLab.ApiClient/Model/ApiResult.cs
+src/NovaLab.ApiClient/Model/BooleanIApiResult.cs
 src/NovaLab.ApiClient/Model/HttpStatusCode.cs
 src/NovaLab.ApiClient/Model/TrackedStreamSubjectDto.cs
 src/NovaLab.ApiClient/Model/TrackedStreamSubjectDtoIApiResult.cs
