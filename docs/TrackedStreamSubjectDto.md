@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Id** | **Guid** |  | [optional] 
 **NovaLabUserId** | **Guid** |  | [optional] 
 **TwitchGameId** | **string** |  | [optional] 
+**TwitchGameName** | **string** |  | [optional] 
+**TwitchGameImageUrl** | **string** |  | [optional] 
 **TwitchBroadcastLanguage** | **string** |  | [optional] 
 **TwitchTitle** | **string** |  | [optional] 
 **TwitchTags** | **List&lt;string&gt;** |  | [optional] 

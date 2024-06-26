@@ -6,6 +6,7 @@ appveyor.yml
 docs/ApiResult.md
 docs/BooleanIApiResult.md
 docs/HttpStatusCode.md
+docs/IApiResult.md
 docs/TrackedStreamSubjectApi.md
 docs/TrackedStreamSubjectDto.md
 docs/TrackedStreamSubjectDtoIApiResult.md
@@ -33,6 +34,7 @@ src/NovaLab.ApiClient/Model/AbstractOpenAPISchema.cs
 src/NovaLab.ApiClient/Model/ApiResult.cs
 src/NovaLab.ApiClient/Model/BooleanIApiResult.cs
 src/NovaLab.ApiClient/Model/HttpStatusCode.cs
+src/NovaLab.ApiClient/Model/IApiResult.cs
 src/NovaLab.ApiClient/Model/TrackedStreamSubjectDto.cs
 src/NovaLab.ApiClient/Model/TrackedStreamSubjectDtoIApiResult.cs
 src/NovaLab.ApiClient/Model/TrackedStreamSubjectDtoPost.cs

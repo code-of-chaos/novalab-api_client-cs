@@ -6,6 +6,45 @@ info:
 servers:
 - url: /
 paths:
+  /api/twitch/tracked-stream-subject/all:
+    get:
+      operationId: GetTrackedStreamSubjects
+      parameters:
+      - explode: true
+        in: query
+        name: user-id
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TrackedStreamSubjectDtoIApiResult'
+          description: OK
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IApiResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IApiResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IApiResult'
+          description: Internal Server Error
+      tags:
+      - TrackedStreamSubject
   /api/twitch/tracked-stream-subject:
     delete:
       operationId: DeleteTrackedStreamSubject
@@ -58,11 +97,19 @@ paths:
       tags:
       - TrackedStreamSubject
     get:
-      operationId: GetTrackedStreamSubjects
+      operationId: GetTrackedStreamSubject
       parameters:
       - explode: true
         in: query
         name: user-id
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: subject-id
         required: false
         schema:
           format: uuid
@@ -85,18 +132,27 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ApiResult'
+                $ref: '#/components/schemas/IApiResult'
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResult'
+                $ref: '#/components/schemas/IApiResult'
             text/json:
               schema:
-                $ref: '#/components/schemas/ApiResult'
+                $ref: '#/components/schemas/IApiResult'
           description: Internal Server Error
       tags:
       - TrackedStreamSubject
     post:
-      operationId: PostTrackedStreamSubject
+      operationId: UpsertTrackedStreamSubject
+      parameters:
+      - explode: true
+        in: query
+        name: subjectId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       requestBody:
         content:
           application/json:
@@ -203,7 +259,7 @@ components:
         - ""
         - ""
         message: message
-        status: 6
+        status: 0
       properties:
         status:
           $ref: '#/components/schemas/HttpStatusCode'
@@ -300,17 +356,38 @@ components:
       - 511
       format: int32
       type: integer
+    IApiResult:
+      additionalProperties: false
+      example:
+        data:
+        - ""
+        - ""
+        message: message
+        status: 6
+      properties:
+        status:
+          $ref: '#/components/schemas/HttpStatusCode'
+        message:
+          nullable: true
+          type: string
+        data:
+          items: {}
+          nullable: true
+          type: array
+      type: object
     TrackedStreamSubjectDto:
       additionalProperties: false
       example:
         novaLabUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         trackedStreamSubjectComponentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         twitchTitle: twitchTitle
+        twitchGameImageUrl: twitchGameImageUrl
         twitchBroadcastLanguage: twitchBroadcastLanguage
         twitchTags:
         - twitchTags
         - twitchTags
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        twitchGameName: twitchGameName
         twitchGameId: twitchGameId
       properties:
         id:
@@ -320,6 +397,12 @@ components:
           format: uuid
           type: string
         twitchGameId:
+          nullable: true
+          type: string
+        twitchGameName:
+          nullable: true
+          type: string
+        twitchGameImageUrl:
           nullable: true
           type: string
         twitchBroadcastLanguage:
@@ -345,20 +428,24 @@ components:
         - novaLabUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           trackedStreamSubjectComponentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           twitchTitle: twitchTitle
+          twitchGameImageUrl: twitchGameImageUrl
           twitchBroadcastLanguage: twitchBroadcastLanguage
           twitchTags:
           - twitchTags
           - twitchTags
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          twitchGameName: twitchGameName
           twitchGameId: twitchGameId
         - novaLabUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           trackedStreamSubjectComponentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           twitchTitle: twitchTitle
+          twitchGameImageUrl: twitchGameImageUrl
           twitchBroadcastLanguage: twitchBroadcastLanguage
           twitchTags:
           - twitchTags
           - twitchTags
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          twitchGameName: twitchGameName
           twitchGameId: twitchGameId
         message: message
         status: 0

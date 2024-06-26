@@ -114,9 +114,10 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *TrackedStreamSubjectApi* | [**DeleteTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#deletetrackedstreamsubject) | **DELETE** /api/twitch/tracked-stream-subject | 
-*TrackedStreamSubjectApi* | [**GetTrackedStreamSubjects**](docs/TrackedStreamSubjectApi.md#gettrackedstreamsubjects) | **GET** /api/twitch/tracked-stream-subject | 
-*TrackedStreamSubjectApi* | [**PostTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#posttrackedstreamsubject) | **POST** /api/twitch/tracked-stream-subject | 
+*TrackedStreamSubjectApi* | [**GetTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#gettrackedstreamsubject) | **GET** /api/twitch/tracked-stream-subject | 
+*TrackedStreamSubjectApi* | [**GetTrackedStreamSubjects**](docs/TrackedStreamSubjectApi.md#gettrackedstreamsubjects) | **GET** /api/twitch/tracked-stream-subject/all | 
 *TrackedStreamSubjectApi* | [**SelectTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#selecttrackedstreamsubject) | **POST** /api/twitch/tracked-stream-subject/select | 
+*TrackedStreamSubjectApi* | [**UpsertTrackedStreamSubject**](docs/TrackedStreamSubjectApi.md#upserttrackedstreamsubject) | **POST** /api/twitch/tracked-stream-subject | 
 
 
 <a id="documentation-for-models"></a>
@@ -125,6 +126,7 @@ Class | Method | HTTP request | Description
  - [Model.ApiResult](docs/ApiResult.md)
  - [Model.BooleanIApiResult](docs/BooleanIApiResult.md)
  - [Model.HttpStatusCode](docs/HttpStatusCode.md)
+ - [Model.IApiResult](docs/IApiResult.md)
  - [Model.TrackedStreamSubjectDto](docs/TrackedStreamSubjectDto.md)
  - [Model.TrackedStreamSubjectDtoIApiResult](docs/TrackedStreamSubjectDtoIApiResult.md)
  - [Model.TrackedStreamSubjectDtoPost](docs/TrackedStreamSubjectDtoPost.md)
